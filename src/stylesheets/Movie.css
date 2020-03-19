@@ -1,0 +1,24 @@
+.movie {
+    width: 25%;
+    padding : 20px;
+    /*color: white;*/
+    /*border : 2px solid yellow;*/
+}
+
+.title-year {
+    display: flex;
+    padding-left: 35px;
+    padding-right: 35px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title, .year {
+    font-weight: bold;
+}
+
+.poster {
+    border-radius: 5%;
+    max-width: 100%;
+    max-height: 100%;
+}

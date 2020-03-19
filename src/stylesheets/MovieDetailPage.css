@@ -1,0 +1,88 @@
+.MovieDetail {
+    display: flex;
+    flex-direction: row;
+    background-color: #282c34;
+    color : white;
+}
+
+.Movieposterbox {
+    /*border : 2px solid yellow;*/
+    padding : 4%;
+    height : 25%;
+    width : 25%;
+}
+
+.Movieposter {
+    border : 1px solid white;
+    border-radius : 5%;
+    height : 100%;
+    width : 100%;
+}
+
+.Movie-info-box {
+    width : 100%;
+    /*border : 2px solid red;*/
+}
+
+.Movie-Genre {
+    border : 1px solid white;
+    border-radius: 40%;
+    margin-left : 45%;
+    padding : 4px;
+    width : 6%;
+}
+
+.Movie-rating-box {
+    /*border : 2px solid yellow;*/
+    color : #8c8c8c;
+    line-height: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Movie-Rating {
+    /*border : 2px solid white;*/
+    padding-left : 15px;
+    padding-right : 15px;
+}
+
+#your-rating {
+    width : 25%;
+}
+.Movie-book-ticket {
+    width : 20%;
+    border : 3px solid #3377ff;
+    padding : 8px;
+    background-color: #3377ff;
+    color : white;
+    margin : 10px;
+}
+
+a:hover, a:active,a.active {
+    color : white;
+    /*border : 2px solid yellow;*/
+    padding : 4px;
+    text-decoration: underline;
+}
+
+a {
+    color : #8c8c8c;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    /*border : 2px solid yellow;*/
+}
+
+li {
+    border : 1px solid #4e5565;
+    margin : 4px;
+    display : inline;
+    padding : 10px;
+}
+
+.Movie-summary-box {
+    padding : 5px;
+}

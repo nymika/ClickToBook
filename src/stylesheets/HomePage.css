@@ -1,0 +1,68 @@
+.slider {
+    min-height: 40vh;
+}
+
+.movie-categories {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+}
+
+.movie-categories-list {
+    display: inline;
+    padding : 15px;
+}
+
+.box-filter
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding : 20px;
+    width : 50%;
+    margin-left : 25%;
+    background-color: #f2f2f2;
+    border-radius : 10%;
+    /*border : 2px solid yellow;*/
+}
+.box-filter-list
+{ /*background: linear-gradient(to bottom,#ffffff 0%,#66ffcc 100%);*/
+    padding : 5px;
+    margin : 35px;
+    border-radius : 10%;
+    background-color: white;
+    /*border : 2px solid green;*/
+}
+
+.lang-filter-heading {
+    padding : 7px;
+}
+
+.genre-filter-heading {
+    padding : 7px;
+}
+.lang-filter {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display : none;
+}
+.genre-filter {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display : none;
+}
+
+.filter-list {
+    padding : 15px;
+    /*border : 2px solid black;*/
+}
+
+.moviesList {
+    display: flex;
+    /*flex-direction: row;*/
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
