@@ -6,6 +6,7 @@ import {Route} from 'react-router-dom';
 import {Footer, Header} from './HeaderFooter';
 import HomePage from './HomePage';
 import MovieDetailPage from './MovieDetailPage';
+import ShowTheatres from "./ShowTheatres";
 
 class App extends Component {
   render() {
@@ -18,13 +19,15 @@ class App extends Component {
                 <ul>
                     <li><Link to ="/Home">Home Page</Link></li>
                     <li><Link to ={{
-                        pathname : '/MovieDetail'
+                        pathname : '/MovieDetailPage'
                     }}>Movie Detail Page</Link></li>
+                    <li><Link to = "ShowTheatres">Show Theatres</Link></li>
                 </ul>
             </div>
 
-            <Route path="/Home" exact component = {HomePage} />
-            <Route path="/MovieDetail" exact component = {MovieDetailPage} />
+            <Route path="/" exact component = {HomePage} />
+            <Route path="/MovieDetailPage/:id" component = {MovieDetailPage } />
+            <Route path="/ShowTheatres" component = {ShowTheatres} />
             <Footer />
         </div>
 

@@ -60,9 +60,26 @@
 }
 
 .moviesList {
+    /*background-color: #282c34;*/
     display: flex;
     /*flex-direction: row;*/
     flex-wrap: wrap;
-    align-items: center;
+    /*align-items: center;*/
     justify-content: center;
+    /*border : 2px solid black;*/
+}
+
+a:hover, a:active,a.active {
+    color : #282c34;
+    /*border : 2px solid yellow;*/
+    padding : 4px;
+    text-decoration: underline;
+}
+
+a {
+    color : #8c8c8c;
+    text-decoration: none;
+    margin : 3%;
+    /*border : 2px solid yellow;*/
+    width : 25%;
 }

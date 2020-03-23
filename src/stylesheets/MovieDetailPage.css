@@ -69,6 +69,9 @@ a:hover, a:active,a.active {
 a {
     color : #8c8c8c;
     text-decoration: none;
+    margin : 3%;
+    /*border : 2px solid yellow;*/
+    width : 25%;
 }
 
 ul {
@@ -85,4 +88,22 @@ li {
 
 .Movie-summary-box {
     padding : 5px;
+}
+
+.SingleReviewBox {
+    border:1px solid white;
+    display: flex;
+    flex-direction: row;
+}
+
+.UserNameBox {
+    border : 1px solid yellow;
+}
+
+.UserName {
+    /*border : 1px solid green;*/
+    width : 100%;
+}
+.UserReview {
+    /*border : 1px solid yellow;*/
 }
