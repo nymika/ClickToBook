@@ -1,0 +1,42 @@
+.ShowTheatresBox {
+    background-color: #c5cad3;
+    padding : 20px;
+}
+
+.SingleTheatreBox {
+    display: flex;
+    flex-direction: row;
+    /*border:1px solid white;*/
+    padding : 5px;
+    padding-left: 25px;
+
+}
+
+.MovieName {
+    /*border : 1px solid green;*/
+    width : 30%;
+}
+
+.DateBox {
+    background-color: white;
+    height : 40px;
+}
+
+.DateButton {
+    height : 100%;
+}
+
+.DateButton:active {
+    background-color: #282c34;
+    color : white;
+}
+
+.TimeButton {
+    height : 100%;
+    /*background-color: white;*/
+}
+
+.TimeButton:active {
+    background-color: #282c34;
+    color : white;
+}

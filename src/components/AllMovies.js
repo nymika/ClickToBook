@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import '../stylesheets/HomePage.css';
+import styles from '../stylesheets/HomePage.module.css';
 import {Link} from 'react-router-dom';
 
 import Movie from "./Movie";
@@ -10,7 +10,6 @@ import FF from "../images/fast-five-2.jpg";
 import batman from "../images/batman-v-superman-dawn-of-justice-3.jpg";
 import alpha from "../images/alpha-alert-1.jpg";
 
-import MovieDetailPage from "./MovieDetailPage";
 
 class AllMovies extends Component {
 
@@ -34,11 +33,12 @@ class AllMovies extends Component {
     render() {
 
         let moviesList = (
-            <div className="moviesList">
+            <div className={styles.moviesList}>
                 {
                     this.state.movies.map ( i => {
                         return (
-                        <Link to={`/MovieDetailPage/${i.id}`} key={i.id} >
+                        <Link className = {styles.MovieIcons}
+                              to={`/MovieDetailPage/${i.id}`} key={i.id} >
                             <Movie Title={i.Title}
                                Poster={i.Poster}/>
                         </Link>

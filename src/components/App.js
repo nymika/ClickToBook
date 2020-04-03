@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import '../stylesheets/App.css';
+import styles from '../stylesheets/App.module.css';
 import {BrowserRouter, Link} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 
@@ -13,21 +13,20 @@ class App extends Component {
     return (
         <BrowserRouter>
 
-        <div className="App">
+        <div className={styles.App}>
             <Header />
             <div>
                 <ul>
-                    <li><Link to ="/Home">Home Page</Link></li>
+                    <li><Link to ="/">Home Page</Link></li>
                     <li><Link to ={{
-                        pathname : '/MovieDetailPage'
+                        pathname : '/MovieDetailPage/Deadpool'
                     }}>Movie Detail Page</Link></li>
-                    <li><Link to = "ShowTheatres">Show Theatres</Link></li>
+                    <li><Link to = "/MovieDetailPage/Deadpool/ShowTheatres">Show Theatres</Link></li>
                 </ul>
             </div>
 
             <Route path="/" exact component = {HomePage} />
             <Route path="/MovieDetailPage/:id" component = {MovieDetailPage } />
-            <Route path="/ShowTheatres" component = {ShowTheatres} />
             <Footer />
         </div>
 

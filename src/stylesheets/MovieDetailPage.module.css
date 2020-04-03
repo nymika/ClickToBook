@@ -1,3 +1,6 @@
+.separateMoviePage {
+
+}
 .MovieDetail {
     display: flex;
     flex-direction: row;
@@ -19,12 +22,12 @@
     width : 100%;
 }
 
-.Movie-info-box {
+.Movieinfobox {
     width : 100%;
     /*border : 2px solid red;*/
 }
 
-.Movie-Genre {
+.MovieGenre {
     border : 1px solid white;
     border-radius: 40%;
     margin-left : 45%;
@@ -32,7 +35,7 @@
     width : 6%;
 }
 
-.Movie-rating-box {
+.Movieratingbox {
     /*border : 2px solid yellow;*/
     color : #8c8c8c;
     line-height: 50%;
@@ -41,32 +44,46 @@
     justify-content: center;
 }
 
-.Movie-Rating {
+.MovieRating {
     /*border : 2px solid white;*/
     padding-left : 15px;
     padding-right : 15px;
 }
 
-#your-rating {
+#yourrating {
     width : 25%;
 }
-.Movie-book-ticket {
+.Moviebookticket {
     width : 20%;
     border : 3px solid #3377ff;
     padding : 8px;
     background-color: #3377ff;
     color : white;
-    margin : 10px;
+    margin : 10px ;
 }
-
-a:hover, a:active,a.active {
+.SummaryLink:hover{
     color : white;
     /*border : 2px solid yellow;*/
     padding : 4px;
     text-decoration: underline;
 }
 
-a {
+
+.SummaryLink:active {
+    color : white;
+/*border : 2px solid yellow;*/
+    padding : 4px;
+    text-decoration: underline;
+}
+
+.SummaryLink.active {
+    color : yellow;
+    border : 2px solid yellow;
+    padding : 4px;
+    text-decoration: underline;
+}
+
+.SummaryLink {
     color : #8c8c8c;
     text-decoration: none;
     margin : 3%;
@@ -74,19 +91,21 @@ a {
     width : 25%;
 }
 
-ul {
+
+.Summaryreviews {
     list-style-type: none;
     /*border : 2px solid yellow;*/
 }
 
-li {
+.summaryreviewslist {
     border : 1px solid #4e5565;
     margin : 4px;
     display : inline;
     padding : 10px;
+
 }
 
-.Movie-summary-box {
+.Moviesummarybox {
     padding : 5px;
 }
 

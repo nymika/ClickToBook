@@ -1,4 +1,4 @@
-.slide-container {
+.slidecontainer {
     width: 70%;
     margin: auto;
     padding : 30px;
@@ -7,7 +7,7 @@
 h3 {
     text-align: center; }
 
-.each-slide {
+.eachslide {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,27 +15,27 @@ h3 {
     height: 50vh;
 }
 
-.each-slide span {
+.eachslide span {
     padding: 20px;
     font-size: 20px;
     background: #efefef;
     text-align: center;
 }
 
-.each-fade {
+.eachfade {
     display: flex;
 }
 
-.each-fade .image-container {
+.eachfade .imagecontainer {
     width: 75%;
     overflow: hidden;
 }
 
-.each-fade .image-container img {
+.eachfade .imagecontainer img {
     width: 100%;
 }
 
-.each-fade h2 {
+.eachfade h2 {
     width: 25%;
     display: flex;
     justify-content: center;

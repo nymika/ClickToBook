@@ -2,18 +2,18 @@
     min-height: 40vh;
 }
 
-.movie-categories {
+.movie_categories {
     list-style-type: none;
     margin: 0;
     padding: 10px;
 }
 
-.movie-categories-list {
+.movie_categories_list {
     display: inline;
     padding : 15px;
 }
 
-.box-filter
+.box_filter
 {
     display: flex;
     flex-direction: row;
@@ -25,7 +25,7 @@
     border-radius : 10%;
     /*border : 2px solid yellow;*/
 }
-.box-filter-list
+.box_filter_list
 { /*background: linear-gradient(to bottom,#ffffff 0%,#66ffcc 100%);*/
     padding : 5px;
     margin : 35px;
@@ -34,27 +34,27 @@
     /*border : 2px solid green;*/
 }
 
-.lang-filter-heading {
+.lang_filter_heading {
     padding : 7px;
 }
 
-.genre-filter-heading {
+.genre_filter_heading {
     padding : 7px;
 }
-.lang-filter {
+.lang_filter {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display : none;
 }
-.genre-filter {
+.genre_filter {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display : none;
 }
 
-.filter-list {
+.filter_list {
     padding : 15px;
     /*border : 2px solid black;*/
 }
@@ -69,14 +69,14 @@
     /*border : 2px solid black;*/
 }
 
-a:hover, a:active,a.active {
-    color : #282c34;
+.MovieIcons:hover, .MovieIcons:active,.MovieIcons.active {
+    color : white;
     /*border : 2px solid yellow;*/
     padding : 4px;
     text-decoration: underline;
 }
 
-a {
+.MovieIcons {
     color : #8c8c8c;
     text-decoration: none;
     margin : 3%;

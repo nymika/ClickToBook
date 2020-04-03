@@ -1,15 +1,17 @@
 import React, {Component } from 'react';
-import '../stylesheets/MovieDetailPage.css';
+import styles from '../stylesheets/MovieDetailPage.module.css';
 import deadpool from "../images/deadpool.jpg";
 
 import {BrowserRouter} from 'react-router-dom';
-import {NavLink,Route} from 'react-router-dom';
+import {NavLink,Route,Link} from 'react-router-dom';
+
 import MovieDetailReviewBox from "./MovieDetailReviewBox";
 import alice from "../images/alice.jpg";
 import harrypotter from "../images/deathly-hallows-p2-2.jpg";
 import FF from "../images/fast-five-2.jpg";
 import batman from "../images/batman-v-superman-dawn-of-justice-3.jpg";
 import alpha from "../images/alpha-alert-1.jpg";
+import ShowTheatres from "./ShowTheatres";
 
 class MovieDetailPage extends Component {
 
@@ -32,7 +34,6 @@ class MovieDetailPage extends Component {
     }
     componentDidMount() {
         console.log(this.props);
-
     }
 
     constructor(props) {
@@ -44,7 +45,7 @@ class MovieDetailPage extends Component {
         var selectedMovie = null;
         this.state.movies.filter( movie => {
             return (
-                (movie.id == selectedMovieId)?
+                (movie.id === selectedMovieId)?
                     selectedMovie = movie : null
             )
             }
@@ -53,52 +54,52 @@ class MovieDetailPage extends Component {
 
         return (
             <BrowserRouter>
-                <div className="MovieDetail">
+                <div className = {styles.separateMoviePage}>
+                <div className={styles.MovieDetail}>
 
-                    <div className="Movieposterbox">
-                        <img src={selectedMovie.Poster} alt="my movie poster" className="Movieposter"/>
+                    <div className={styles.Movieposterbox}>
+                        <img src={selectedMovie.Poster} alt="my movie poster" className={styles.Movieposter}/>
                     </div>
 
-                    <div className="Movie-info-box">
-                        <h1 className="Movietitle">{selectedMovie.Title}</h1>
-                        <p className="Movie-Genre">Genre</p>
+                    <div className={styles.Movieinfobox}>
+                        <h1 className={styles.Movietitle}>{selectedMovie.Title}</h1>
+                        <p className={styles.MovieGenre}>Genre</p>
                         <p>U , Language, 2D</p>
-                        <div className="Movie-rating-box">
-                            <div className="Movie-Rating">
+                        <div className={styles.Movieratingbox}>
+                            <div className={styles.MovieRating}>
                                 <p>3.9</p>
                                 <p>User's Rating</p>
                             </div>
-                            <div className="Movie-Rating">
+                            <div className={styles.MovieRating}>
                                 <p>3.9</p>
                                 <p>Critic's Rating</p>
                             </div>
-                            <div className="Movie-Rating">
+                            <div className={styles.MovieRating}>
                                 <input id="your-rating" type="text" />
                                 <p>You rate it</p>
                             </div>
                         </div>
-                        <button className="Movie-book-ticket">BOOK TICKETS</button>
-                        <div className="Summary-reviews-heading">
-                            <ul>
-                                <li><NavLink to = {{
-                                    pathname : this.props.match.url}
-                                }>Summary</NavLink></li>
-                                <li><NavLink to = {{
-                                    pathname : this.props.match.url + "/User's Reviews"}
-                                }>User's Reviews</NavLink></li>
-                                <li><NavLink to = {{
-                                    pathname : this.props.match.url + "/Critic's Reviews"}
-                                }>Critic's Reviews</NavLink></li>
+                        <Link to={this.props.match.url + '/ShowTheatres'} >
+                        <button onClick= { () => window.scrollTo(0,500)} className={styles.Moviebookticket}>BOOK TICKETS</button>
+                        </Link>
+                        <div className={styles.Summaryreviewsheading}>
+                            <ul className={styles.Summaryreviews}>
+                                <Link className = {styles.SummaryLink} to = {this.props.match.url}><li className = {styles.summaryreviewslist}>Summary</li></Link>
+                                <Link className = {styles.SummaryLink} to = {this.props.match.url + "/User's Reviews"}><li className = {styles.summaryreviewslist}>User's Reviews</li></Link>
+                                <Link className = {styles.SummaryLink} to = {this.props.match.url + "/Critic's Reviews"}><li className = {styles.summaryreviewslist}>Critic's Reviews</li></Link>
                             </ul>
                         </div>
 
-                        <div className="Movie-summary-box">
+                        <div className={styles.Moviesummarybox}>
                             <Route path="/MovieDetailPage/:id" exact render = { () => selectedMovie.Summary}/>
                             <Route path="/MovieDetailPage/:id/User's Reviews" exact component={MovieDetailReviewBox} />
                             <Route path="/MovieDetailPage/:id/Critic's Reviews" exact component={MovieDetailReviewBox} />
                         </div>
                     </div>
-                        </div>
+                </div>
+                    <Route path={this.props.match.url + "/ShowTheatres"} component = {ShowTheatres} />
+
+                </div>
             </BrowserRouter>
         )
     }

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/clicktobook.iml" filepath="$PROJECT_DIR$/.idea/clicktobook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../webd/react/udemy/.idea/udemy.iml" filepath="$PROJECT_DIR$/../../webd/react/udemy/.idea/udemy.iml" />
     </modules>
   </component>
 </project>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Slide } from 'react-slideshow-image';
-import '../stylesheets/slider.css';
+import styles from '../stylesheets/slider.module.css';
 import slider1 from '../images/slider1.jpg';/*/static/media/slider1.ff0b32f3.jpg*/
 import slider2 from '../images/slider2.jpg';/*/static/media/slider2.b420343f.jpg */
 import slider3 from '../images/slider3.jpg';/*/static/media/slider3.b4d7fdc0.jpg*/
@@ -29,35 +29,35 @@ const properties = {
 
 const Slideshow = () => {
     return (
-        <div className="slide-container">
+        <div className={styles.slidecontainer}>
             {console.log(slider1)}
             {console.log(slider2)}
             {console.log(slider3)}
             {console.log(slider4)}
             {console.log(slider5)}
             <Slide {...properties}>
-                <div className="each-slide">
+                <div className={styles.eachslide}>
                     <img src={slider1} width="100%" height="100%"/>
                 </div>
-                <div className="each-slide">
+                <div className={styles.eachslide}>
                     <img src={slideImages[0]} width="100%" height="100%"/>
                 </div>
-                <div className="each-slide">
+                <div className={styles.eachslide}>
                     <img src='../images/slider2.jpg' width="100%" height="100%"/>
                 </div>
-                <div className="each-slide">
+                <div className={styles.eachslide}>
                     <img src={slideImages[1]} width="100%" height="100%"/>
                 </div>
-                <div className="each-slide">
+                <div className={styles.eachslide}>
                     <img src='/static/media/slider3.b4d7fdc0.jpg' width="100%" height="100%"/>
                 </div>
-                <div className="each-slide">
+                <div className={styles.eachslide}>
                     <img src={slideImages[2]} width="100%" height="100%"/>
                 </div>
-                <div className="each-slide">
+                <div className={styles.eachslide}>
                     <img src={slideImages[3].src} width="100%" height="100%"/>
                 </div>
-                <div className="each-slide">
+                <div className={styles.eachslide}>
                     <img src={slideImages[4].src} width="100%" height="100%"/>
                 </div>
             </Slide>
