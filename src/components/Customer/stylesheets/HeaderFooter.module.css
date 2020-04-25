@@ -19,6 +19,10 @@
     right: 15px;
 }
 
+.Applogo {
+    cursor : pointer;
+  }
+
 .searchbox {
     margin : 15px;
 }

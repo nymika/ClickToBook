@@ -1,14 +1,15 @@
 import React, {Component } from 'react';
-import styles from '../stylesheets/HomePage.module.css';
 import {Link} from 'react-router-dom';
 
+import styles from './stylesheets/HomePage.module.css'
+
 import Movie from "./Movie";
-import deadpool from "../images/deadpool.jpg";
-import alice from "../images/alice.jpg";
-import harrypotter from "../images/deathly-hallows-p2-2.jpg";
-import FF from "../images/fast-five-2.jpg";
-import batman from "../images/batman-v-superman-dawn-of-justice-3.jpg";
-import alpha from "../images/alpha-alert-1.jpg";
+import deadpool from "./images/deadpool.jpg";
+import alice from "./images/alice.jpg";
+import harrypotter from "./images/deathly-hallows-p2-2.jpg";
+import FF from "./images/fast-five-2.jpg";
+import batman from "./images/batman-v-superman-dawn-of-justice-3.jpg";
+import alpha from "./images/alpha-alert-1.jpg";
 
 
 class AllMovies extends Component {

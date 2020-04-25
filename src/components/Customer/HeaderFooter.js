@@ -1,6 +1,6 @@
 import React, {Component } from 'react';
-import styles from '../stylesheets/HeaderFooter.module.css';
-import Logo from '../images/logo1.png';
+import styles from './stylesheets/HeaderFooter.module.css';
+import Logo from './images/logo1.png';
 
 class Header extends Component {
     render() {
@@ -8,7 +8,7 @@ class Header extends Component {
             <div className={styles.Appheader}>
 
                 <div className={styles.Appheaderleft}>
-                    <img src={Logo} alt="logo" />
+                    <img className={styles.Applogo} src={Logo} alt="logo" />
                     <input className={styles.searchbox} type="text" placeholder="Search for Movies" />
                 </div>
 

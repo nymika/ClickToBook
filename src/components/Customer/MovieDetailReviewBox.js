@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import styles from '../stylesheets/MovieDetailPage.module.css';
+import styles from './stylesheets/MovieDetailPage.module.css';
 
 class MovieDetailReviewBox extends Component {
     render() {

@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import styles from '../stylesheets/ShowTheatres.module.css';
+import styles from './stylesheets/ShowTheatres.module.css';
 
 import {BrowserRouter} from 'react-router-dom';
 import {Route,Link} from 'react-router-dom';

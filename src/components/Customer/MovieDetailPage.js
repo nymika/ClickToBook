@@ -1,17 +1,17 @@
 import React, {Component } from 'react';
-import styles from '../stylesheets/MovieDetailPage.module.css';
-import deadpool from "../images/deadpool.jpg";
-
 import {BrowserRouter} from 'react-router-dom';
-import {NavLink,Route,Link} from 'react-router-dom';
+import {Route,Link} from 'react-router-dom';
 
+import styles from './stylesheets/MovieDetailPage.module.css';
 import MovieDetailReviewBox from "./MovieDetailReviewBox";
-import alice from "../images/alice.jpg";
-import harrypotter from "../images/deathly-hallows-p2-2.jpg";
-import FF from "../images/fast-five-2.jpg";
-import batman from "../images/batman-v-superman-dawn-of-justice-3.jpg";
-import alpha from "../images/alpha-alert-1.jpg";
 import ShowTheatres from "./ShowTheatres";
+
+import deadpool from "./images/deadpool.jpg";
+import alice from "./images/alice.jpg";
+import harrypotter from "./images/deathly-hallows-p2-2.jpg";
+import FF from "./images/fast-five-2.jpg";
+import batman from "./images/batman-v-superman-dawn-of-justice-3.jpg";
+import alpha from "./images/alpha-alert-1.jpg";
 
 class MovieDetailPage extends Component {
 
