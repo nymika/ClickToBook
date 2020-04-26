@@ -1,3 +1,6 @@
+.HomePage {
+    background: linear-gradient(#282c34,white);
+}
 .slider {
     min-height: 40vh;
 }

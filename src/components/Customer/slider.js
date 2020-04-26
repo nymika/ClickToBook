@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Slide } from 'react-slideshow-image';
 
 import styles from './stylesheets/slider.module.css';
+
 import slider1 from './images/slider1.jpg';/*/static/media/slider1.ff0b32f3.jpg*/
 import slider2 from './images/slider2.jpg';/*/static/media/slider2.b420343f.jpg */
 import slider3 from './images/slider3.jpg';/*/static/media/slider3.b4d7fdc0.jpg*/
@@ -28,7 +29,9 @@ const properties = {
     }
 }
 
-const Slideshow = () => {
+class Slideshow extends Component {
+    
+    render() {
     return (
         <div className={styles.slidecontainer}>
             {console.log(slider1)}
@@ -62,8 +65,8 @@ const Slideshow = () => {
                     <img src={slideImages[4].src} width="100%" height="100%"/>
                 </div>
             </Slide>
-        </div>
-    )
+            </div>
+    )}
 }
 
 export default Slideshow;
