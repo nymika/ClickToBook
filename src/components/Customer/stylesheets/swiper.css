@@ -31,3 +31,9 @@
       width : 150px;
       border-radius: 5%;
   }
+
+  .posterimage {
+    max-height : 200px;
+    max-width : 200px;
+    border-radius: 5%;
+  }

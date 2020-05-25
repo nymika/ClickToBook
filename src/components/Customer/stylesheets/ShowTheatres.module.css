@@ -13,22 +13,15 @@
 }
 
 .MovieName {
-    /*border : 1px solid green;*/
+    /* border : 1px solid green; */
     width : 30%;
 }
 
 .DateBox {
-    background-color: white;
-    height : 40px;
-}
-
-.DateButton {
-    height : 100%;
-}
-
-.DateButton:active {
-    background-color: #282c34;
-    color : white;
+    background-color: #f7b161;
+    height : 30px;
+    width : 30%;
+    /* border : 2px solid green; */
 }
 
 .TimeButton {

@@ -5,6 +5,7 @@ import {Route,Link} from 'react-router-dom';
 import styles from './stylesheets/MovieDetailPage.module.css';
 import MovieDetailReviewBox from "./MovieDetailReviewBox";
 import ShowTheatres from "./ShowTheatres";
+import tick from './images/tick.png';
 
 import deadpool from "./images/deadpool.jpg";
 import alice from "./images/alice.jpg";
@@ -75,7 +76,8 @@ class MovieDetailPage extends Component {
                                 <p>Critic's Rating</p>
                             </div>
                             <div className={styles.MovieRating}>
-                                <input id="your-rating" type="text" />
+                                <input className={styles.yourrating} type="text" typeholder="out of 5"/>
+                                <button type="submit"><img className={styles.tick} src={tick} alt="submit"/></button>
                                 <p>You rate it</p>
                             </div>
                         </div>

@@ -1,0 +1,37 @@
+.ticketbox {
+    /* border : 2px solid black; */
+    font-style: italic;
+    color : black;
+    margin : 10%;
+    background-color: white;
+    border: 2px solid #888888;
+}
+.ticket, .titlebox, .theatretimedate, .idDetails {
+    /* border : 2px solid green; */
+    display: flex;
+    align-items: column;
+}
+/* .titlebox, .theatretimedate, .idDetails {
+    height : 10%;
+} */
+.poster {
+    /* border : 2px solid yellow; */
+    padding-top : 20%;
+    padding-left : 10%;
+    max-height : 270px;
+    max-width : 270px;
+}
+.ticketdetails {
+    /* border : 2px solid blue; */
+    padding-left: 10%;
+}
+.seats {
+    color : #ff9900;
+}
+.theatretimedate {
+    color : gray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.idName {
+    color : gray;
+}

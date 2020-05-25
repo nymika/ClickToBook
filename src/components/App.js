@@ -17,7 +17,7 @@ class App extends Component {
                             }}>Theatre Owner Page</Link></li>
                     <li><Link to = "/AdminPage">Admin Page</Link></li>
                 </ul>
-                <p>Parts left out are home page movies display, linking genres to movies, dates slider for tickets, location feature, login page, your profile page, checkout page, tickets page.</p>
+                <p>Parts left out are  linking genres to movies, search feature, location feature, login page, checkout page</p>
             </div>
             <Switch>
                 <Route path="/TheatreOwnerPage" component = {TheatreOwnerPage } />

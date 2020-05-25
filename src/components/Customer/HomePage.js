@@ -1,4 +1,5 @@
-import React, {Component } from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Swiper from 'swiper';
 
 import 'swiper/css/swiper.min.css';
@@ -18,64 +19,105 @@ import english from './images/homePage Slider Images/english.jpg';
 import telugu from './images/homePage Slider Images/telugu.jpg';
 import punjabi from './images/homePage Slider Images/punjabi.jpg';
 
+import deadpool from "./images/deadpool.jpg";
+import alice from "./images/alice.jpg";
+import harrypotter from "./images/deathly-hallows-p2-2.jpg";
+import FF from "./images/fast-five-2.jpg";
+import batman from "./images/batman-v-superman-dawn-of-justice-3.jpg";
+import alpha from "./images/alpha-alert-1.jpg";
+
 import Slideshow from "./slider";
 import AllMovies from './AllMovies';
 
 class HomePage extends Component {
+
+    state = {
+        latestMovies: [
+            { id: 'Deadpool', Title: 'Deadpool', Poster: deadpool },
+            { id: 'Alice', Title: 'Alice through the looking glass', Poster: alice },
+            { id: 'HarryPotter', Title: 'HarryPotter', Poster: harrypotter },
+            { id: 'FF', Title: 'Fast&Furious', Poster: FF },
+            { id: 'Batman', Title: 'Batman', Poster: batman },
+            { id: 'alpha', Title: 'Alpha Alert', Poster: alpha },
+            { id: 'ASVR', Title: 'ASVR', Poster: deadpool }
+        ]
+    }
+
     componentDidMount() {
         console.log(this.props);
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 7,
-            spaceBetween: 30,
+            spaceBetween: 10,
             // slidesPerGroup: 7,
             // loop: true,
             // loopFillGroupWithBlank: true,
             pagination: {
-              el: '.swiper-pagination',
-              clickable: true,
+                el: '.swiper-pagination',
+                clickable: true,
             },
             navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
             },
-          });
+        });
+
     }
     render() {
+
+        let trendingmoviesList = (
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+                    {
+                        this.state.latestMovies.map(i => {
+                            return (
+                                <div class="swiper-slide">
+                                    <Link
+                                        to={`/MovieDetailPage/${i.id}`} key={i.id} >
+                                        <img src={i.Poster} class="posterimage" alt="trendingmovie" />
+                                    </Link>
+                                </div>
+                            )
+                        })
+                    }
+
+                </div>
+                <div class="swiper-button-next"></div>
+            </div>
+        )
+
         return (
             <div className={styles.HomePage}>
-                <Slideshow className={styles.slider}/>
-
-                {/* <div className={styles.movieslist}>
-                    <h2>Movies :</h2>
-                </div>
-                <AllMovies /> */}
+                <Slideshow className={styles.slider} />
 
                 <h2 class="genreheading">Latest</h2>
+                {trendingmoviesList}
                 <h2 class="genreheading">Trending</h2>
-                
+                {trendingmoviesList}
+
                 <h2 class="genreheading">Movie Genres</h2>
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src={action} class="genreimage" alt="action"/>
+                            <img src={action} class="genreimage" alt="action" />
                         </div>
                         <div class="swiper-slide">
-                            <img src={comedy} class="genreimage" alt="comedy"/>
+                            <img src={comedy} class="genreimage" alt="comedy" />
                         </div>
                         <div class="swiper-slide">
-                            <img src={drama} class="genreimage" alt="drama"/>
+                            <img src={drama} class="genreimage" alt="drama" />
                         </div>
                         <div class="swiper-slide">
-                            <img src={crime} class="genreimage" alt="crime"/>
+                            <img src={crime} class="genreimage" alt="crime" />
                         </div>
                         <div class="swiper-slide">
-                            <img src={animated} class="genreimage" alt="animated"/>
+                            <img src={animated} class="genreimage" alt="animated" />
                         </div>
                         <div class="swiper-slide">
-                            <img src={romance} class="genreimage" alt="romance"/>
+                            <img src={romance} class="genreimage" alt="romance" />
                         </div>
                         <div class="swiper-slide">
-                            <img src={horror} class="genreimage" alt="horror"/>
+                            <img src={horror} class="genreimage" alt="horror" />
                         </div>
                     </div>
                     <div class="swiper-button-next"></div>
@@ -87,18 +129,18 @@ class HomePage extends Component {
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src={hindi} class="genreimage" alt="hindi"/>
+                            <img src={hindi} class="genreimage" alt="hindi" />
                         </div>
                         <div class="swiper-slide">
-                            <img src={english} class="genreimage" alt="english"/>
+                            <img src={english} class="genreimage" alt="english" />
                         </div>
                         <div class="swiper-slide">
-                            <img src={telugu} class="genreimage" alt="telugu"/>
+                            <img src={telugu} class="genreimage" alt="telugu" />
                         </div>
                         <div class="swiper-slide">
-                            <img src={punjabi} class="genreimage" alt="punjabi"/>
+                            <img src={punjabi} class="genreimage" alt="punjabi" />
                         </div>
-                       
+
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -108,8 +150,8 @@ class HomePage extends Component {
                 <AllMovies />
 
             </div>
-           )
-        }
+        )
+    }
 }
 
 export default HomePage;

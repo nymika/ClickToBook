@@ -47,8 +47,12 @@
     padding-right : 15px;
 }
 
-#yourrating {
+.yourrating {
     width : 25%;
+}
+.tick {
+    max-height : 14px;
+    max-width : 14px;
 }
 .Moviebookticket {
     width : 20%;

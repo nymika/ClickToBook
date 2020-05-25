@@ -3,7 +3,6 @@ import styles from './stylesheets/ShowTheatres.module.css';
 
 import {BrowserRouter} from 'react-router-dom';
 import {Route,Link} from 'react-router-dom';
-//import { Button } from 'semantic-ui-react';
 import TheatreSeats from './TheatreSeats';
 
 class ShowTheatres extends Component
@@ -16,11 +15,8 @@ class ShowTheatres extends Component
             <BrowserRouter>
                 <div>
             <div className = {styles.ShowTheatresBox}>
-                <div className = {styles.DateBox}>
-                    <button className = {styles.DateButton}>1 THURS</button>
-                    <button className = {styles.DateButton}>1 THURS</button>
-                    <button className = {styles.DateButton}>1 THURS</button>
-                </div>
+                <input type="date" className = {styles.DateBox}></input>
+                <hr/>
                 <div className = {styles.SingleTheatreBox}>
                     <h4 className= {styles.MovieName}>INOX</h4>
                     <Link to={this.props.match.url + '/TheatreSeats'} >
