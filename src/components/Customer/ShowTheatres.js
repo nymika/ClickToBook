@@ -3,7 +3,7 @@ import styles from './stylesheets/ShowTheatres.module.css';
 
 import {BrowserRouter} from 'react-router-dom';
 import {Route,Link} from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
+//import { Button } from 'semantic-ui-react';
 import TheatreSeats from './TheatreSeats';
 
 class ShowTheatres extends Component

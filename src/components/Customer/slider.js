@@ -41,28 +41,28 @@ class Slideshow extends Component {
             {console.log(slider5)}
             <Slide {...properties}>
                 <div className={styles.eachslide}>
-                    <img src={slider1} width="100%" height="100%"/>
+                    <img src={slider1} width="100%" height="100%" alt=""/>
                 </div>
                 <div className={styles.eachslide}>
-                    <img src={slideImages[0]} width="100%" height="100%"/>
+                    <img src={slideImages[0]} width="100%" height="100%" alt=""/>
                 </div>
                 <div className={styles.eachslide}>
-                    <img src='../images/slider2.jpg' width="100%" height="100%"/>
+                    <img src='../images/slider2.jpg' width="100%" height="100%" alt=""/>
                 </div>
                 <div className={styles.eachslide}>
-                    <img src={slideImages[1]} width="100%" height="100%"/>
+                    <img src={slideImages[1]} width="100%" height="100%" alt=""/>
                 </div>
                 <div className={styles.eachslide}>
-                    <img src='/static/media/slider3.b4d7fdc0.jpg' width="100%" height="100%"/>
+                    <img src='/static/media/slider3.b4d7fdc0.jpg' width="100%" height="100%" alt=""/>
                 </div>
                 <div className={styles.eachslide}>
-                    <img src={slideImages[2]} width="100%" height="100%"/>
+                    <img src={slideImages[2]} width="100%" height="100%" alt=""/>
                 </div>
                 <div className={styles.eachslide}>
-                    <img src={slideImages[3].src} width="100%" height="100%"/>
+                    <img src={slideImages[3].src} width="100%" height="100%" alt=""/>
                 </div>
                 <div className={styles.eachslide}>
-                    <img src={slideImages[4].src} width="100%" height="100%"/>
+                    <img src={slideImages[4].src} width="100%" height="100%" alt=""/>
                 </div>
             </Slide>
             </div>

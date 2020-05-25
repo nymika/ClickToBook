@@ -6,6 +6,7 @@ import styles from './stylesheets/App.module.css';
 import {Footer, Header} from './HeaderFooter';
 import HomePage from './HomePage';
 import MovieDetailPage from './MovieDetailPage';
+import MyProfile from './MyProfile';
 
 class UserApp extends Component {
     render() {
@@ -21,11 +22,13 @@ class UserApp extends Component {
                                 pathname : '/MovieDetailPage/Deadpool'
                             }}>Movie Detail Page</Link></li>
                             <li><Link to = "/MovieDetailPage/Deadpool/ShowTheatres">Show Theatres</Link></li>
+                            <li><Link to ="/MyProfile"> My Profile Page</Link></li>
                         </ul>
                     </div>
 
                     <Route path="/" exact component = {HomePage} />
                     <Route path="/MovieDetailPage/:id" component = {MovieDetailPage } />
+                    <Route path="/MyProfile" component = {MyProfile} />
                     <Footer />
                 </div>
 

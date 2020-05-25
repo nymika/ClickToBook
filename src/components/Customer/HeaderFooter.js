@@ -38,11 +38,11 @@ class Footer extends Component {
 
                 <div className={styles.Appfooter}>
 
-                    <a href="#" className={`fa fa-facebook ${styles.fa} ${styles.fa_facebook}`}></a>
-                    <a href="#" className={`fa fa-twitter ${styles.fa} ${styles.fa_twitter}`}></a>
-                    <a href="#" className={`fa fa-twitter ${styles.fa} ${styles.fa_linkedin}`}></a>
-                    <a href="#" className={`fa fa-twitter ${styles.fa} ${styles.fa_youtube}`}></a>
-                    <a href="#" className={`fa fa-twitter ${styles.fa} ${styles.fa_instagram}`}></a>
+                    <a href="www.facebook.com" className={`fa fa-facebook ${styles.fa} ${styles.fa_facebook}`}> </a>
+                    <a href="www.twitter.com" className={`fa fa-twitter ${styles.fa} ${styles.fa_twitter}`}> </a>
+                    <a href="www.linkedin.com" className={`fa fa-twitter ${styles.fa} ${styles.fa_linkedin}`}> </a>
+                    <a href="www.youtube.com" className={`fa fa-twitter ${styles.fa} ${styles.fa_youtube}`}> </a>
+                    <a href="www.instagram.com" className={`fa fa-twitter ${styles.fa} ${styles.fa_instagram}`}> </a>
                     </div>
             </div>
         )

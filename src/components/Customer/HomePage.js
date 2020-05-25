@@ -19,6 +19,7 @@ import telugu from './images/homePage Slider Images/telugu.jpg';
 import punjabi from './images/homePage Slider Images/punjabi.jpg';
 
 import Slideshow from "./slider";
+import AllMovies from './AllMovies';
 
 class HomePage extends Component {
     componentDidMount() {
@@ -48,30 +49,33 @@ class HomePage extends Component {
                     <h2>Movies :</h2>
                 </div>
                 <AllMovies /> */}
+
+                <h2 class="genreheading">Latest</h2>
+                <h2 class="genreheading">Trending</h2>
                 
                 <h2 class="genreheading">Movie Genres</h2>
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src={action} class="genreimage"/>
+                            <img src={action} class="genreimage" alt="action"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src={comedy} class="genreimage"/>
+                            <img src={comedy} class="genreimage" alt="comedy"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src={drama} class="genreimage"/>
+                            <img src={drama} class="genreimage" alt="drama"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src={crime} class="genreimage"/>
+                            <img src={crime} class="genreimage" alt="crime"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src={animated} class="genreimage"/>
+                            <img src={animated} class="genreimage" alt="animated"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src={romance} class="genreimage"/>
+                            <img src={romance} class="genreimage" alt="romance"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src={horror} class="genreimage"/>
+                            <img src={horror} class="genreimage" alt="horror"/>
                         </div>
                     </div>
                     <div class="swiper-button-next"></div>
@@ -83,22 +87,25 @@ class HomePage extends Component {
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src={hindi} class="genreimage"/>
+                            <img src={hindi} class="genreimage" alt="hindi"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src={english} class="genreimage"/>
+                            <img src={english} class="genreimage" alt="english"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src={telugu} class="genreimage"/>
+                            <img src={telugu} class="genreimage" alt="telugu"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src={punjabi} class="genreimage"/>
+                            <img src={punjabi} class="genreimage" alt="punjabi"/>
                         </div>
                        
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
+
+                <h2 class="genreheading">Your Recommendations</h2>
+                <AllMovies />
 
             </div>
            )

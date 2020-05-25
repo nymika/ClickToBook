@@ -28,14 +28,14 @@ class TheatreSeats extends Component
         if(this.state.seatReserved.indexOf(seat) > -1 ) {
             this.setState({
                 seatAvailable: this.state.seatAvailable.concat(seat),
-                seatReserved: this.state.seatReserved.filter(res => res != seat),
+                seatReserved: this.state.seatReserved.filter(res => res !== seat),
                 //seatSelected: this.state.seatSelected.filter(res => res != seat)
             })
         } else {
             this.setState({
                 seatReserved: this.state.seatReserved.concat(seat),
                 //seatSelected: this.state.seatSelected.concat(seat),
-                seatAvailable: this.state.seatAvailable.filter(res => res != seat)
+                seatAvailable: this.state.seatAvailable.filter(res => res !== seat)
             })
         }
     }

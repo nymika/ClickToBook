@@ -36,9 +36,9 @@ class MovieDetailPage extends Component {
         console.log(this.props);
     }
 
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     render() {
         var selectedMovieId = this.props.match.params.id;
