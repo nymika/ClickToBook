@@ -1,0 +1,89 @@
+.Appheader {
+    background-color: #282c34;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /*justify-content: right*/;
+    font-size: calc(10px + 2vmin);
+    border-bottom: 1px solid white;
+}
+
+.Appheaderleft {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Appheaderright {
+    position: absolute;
+    right: 15px;
+}
+
+.Applogo {
+    cursor : pointer;
+  }
+
+.searchbox {
+    margin : 15px;
+}
+
+.about {
+    background-color: #f2f2f2;
+    padding : 40px;
+}
+
+.aboutinfopara {
+    color : #a6a6a6;
+}
+
+.Appfooter {
+    background-color: #282c34;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    min-height: 13vh;
+}
+
+.fa {
+    border : 2px solid white;
+    padding: 10px;
+    font-size: 25px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa_facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.fa_twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.fa_linkedin {
+    background: #007bb5;
+    color: white;
+}
+
+.fa_youtube {
+    background: #bb0000;
+    color: white;
+}
+
+.fa_instagram {
+    background: #125688;
+    color: white;
+}
