@@ -12,40 +12,83 @@ class UserSignup extends Component {
             email: '',
             mobile: '',
             password: '',
-            repassword: ''
+            repassword: '',
+            errors: {}
         }
         this.updateUserState = this.updateUserState.bind(this);
         this.createUserAPIHandler = this.createUserAPIHandler.bind(this);
+        this.handleValidation = this.handleValidation.bind(this);
     }
 
     updateUserState = (event) => {
         this.setState({
-            [event.target.name] : event.target.value
+            [event.target.name]: event.target.value
         });
+    }
+
+    handleValidation() {
+        let errors = {};
+        let formIsValid = true;
+        
+        //Password
+        let password = this.state.password;
+        if (password.length === 0) {
+            formIsValid = false;
+            errors["password"] = "* Cannot be empty";
+        }
+        else if (password.length < 7) {
+            formIsValid = false;
+            errors["password"] = "* Password should contain 7 characters";
+        }
+
+        //Email
+        let email = this.state.email;
+        if (email.length === 0) {
+            formIsValid = false;
+            errors["email"] = "* Cannot be empty";
+        }
+        else if(typeof email !== "undefined"){
+            let lastAtPos = email.lastIndexOf('@');
+            let lastDotPos = email.lastIndexOf('.');
+      
+            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && email.indexOf('@@') === -1 && lastDotPos > 2 && (email.length - lastDotPos) > 2)) {
+              formIsValid = false;
+              errors["email"] = "* Email is not valid";
+            }
+          }
+
+        this.setState({ errors: errors });
+        return formIsValid;
     }
 
     createUserAPIHandler = (e) => {
         e.preventDefault()
-        console.log(this.state);
-        const user = {
-            firstname: this.state.firstname,
-            lastname : this.state.lastname,
-            mobile : this.state.mobile,
-            email: this.state.email,
-            password: this.state.password,
-        };
-        axios.post('http://localhost:3001/users/signup', user)
-            .then(response => {
-                console.log(response.data)
-            }).catch((e) => console.log(e));
-        this.setState({
-            firstname: '',
-            lastname: '',
-            email: '',
-            mobile: '',
-            password: '',
-            repassword: ''
-        })
+        if (this.handleValidation()) {
+            console.log('validation successful!');
+            console.log(this.state);
+            const user = {
+                firstname: this.state.firstname,
+                lastname: this.state.lastname,
+                mobile: this.state.mobile,
+                email: this.state.email,
+                password: this.state.password,
+            };
+            axios.post('http://localhost:3001/users/signup', user)
+                .then(response => {
+                    console.log(response.data)
+                }).catch((e) => alert(e));
+            this.setState({
+                firstname: '',
+                lastname: '',
+                email: '',
+                mobile: '',
+                password: '',
+                repassword: ''
+            })
+        }
+        else {
+            alert("Form has errors.")
+        }
     }
 
     render() {
@@ -60,6 +103,7 @@ class UserSignup extends Component {
 
                     <div className={styles.email}>
                         <input type="text" name="email" value={this.state.email} onChange={this.updateUserState} className={styles.inputbox} placeholder="email@gmail.com"></input>
+                        <br/><span className={styles.warning}>{this.state.errors["email"]}</span>
                     </div>
 
                     <div className={styles.mymobile}>
@@ -69,7 +113,8 @@ class UserSignup extends Component {
                     <div>
                         <p className={styles.genderlabel}>Enter Password</p>
                         <input type="text" name="password" value={this.state.password} onChange={this.updateUserState} className={styles.inputbox} id="pass" placeholder="enter password"></input>
-                        <input type="text" name="repassword" value={this.state.repassword} onChange={this.updateUserState}className={styles.inputbox} id="repass" placeholder="re-enter password to confirm"></input>
+                        <br/><span className={styles.warning}>{this.state.errors["password"]}</span>
+                        {/* <input type="text" name="repassword" value={this.state.repassword} onChange={this.updateUserState} className={styles.inputbox} id="repass" placeholder="re-enter password to confirm"></input> */}
                     </div>
 
                     <button type="submit" className={styles.submitbtn} onClick={this.createUserAPIHandler}>Create new account</button>

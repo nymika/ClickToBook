@@ -17,7 +17,7 @@
 }
 .inputbox {
     height : 30px;
-    margin : 4%;
+    margin : 2%;
     /* border: 2px solid black; */
 }
 .submitbtn {
@@ -26,7 +26,7 @@
     height : 45px;
     width : 190px;
     border-radius: 10%;
-    margin-top : 10%;
+    /* margin-top : 10%; */
 }
 .heading {
     border-bottom: 2px solid #4e5565;
@@ -34,4 +34,10 @@
     width : 30%;
     margin-left : 35%;
     color : maroon;
+}
+
+.warning {
+    color : red;
+    /* border : 2px solid black; */
+    margin : -15px;
 }
