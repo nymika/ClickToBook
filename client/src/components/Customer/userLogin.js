@@ -69,7 +69,11 @@ class UserLogin extends Component {
             };
             axios.post('http://localhost:3001/users/login', user)
                 .then(response => {
+                    console.log('logged in!')
                     console.log(response.data)
+                    localStorage.setItem("currentUser",JSON.stringify(response.data.user))
+                    localStorage.setItem("token",response.data.token)
+                    this.props.history.replace('/');
                 }).catch((e) => alert(e));
             this.setState({
                 email: '',
@@ -79,7 +83,10 @@ class UserLogin extends Component {
         else {
             alert("Form has errors.")
         }
+        this.loggedIn=true;
     }
+
+    
 
     render() {
         return (

@@ -97,6 +97,7 @@ userSchema.statics.findByCredentials=async (email,password)=>{
     const isMatch=await bcrypt.compare(password,user.password)
     
     if(!isMatch){
+        console.log('password not matchinggg')
         throw new Error('Password Mismatch')
     }
     return user;
@@ -105,9 +106,11 @@ userSchema.pre('save',async function(next){
     const user=this;
     console.log("starting")
     if(user.isModified('password')){
+        console.log('password changing')
         user.password=await bcrypt.hash(user.password,8)
     }
     next();
+
 })
 
 const User=mongoose.model('User',userSchema)

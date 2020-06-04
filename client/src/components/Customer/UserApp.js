@@ -9,6 +9,8 @@ import MovieDetailPage from './MovieDetailPage';
 import MyProfile from './MyProfile';
 import UserLogin from './userLogin';
 import UserSignUp from './userSignup';
+import UserLogout from './userLogout';
+import UserDelete from './userDelete';
 
 //import {callAPI} from '../services/auth.services'
 
@@ -35,6 +37,8 @@ class UserApp extends Component {
                     <Route path="/userLogin" exact component = {UserLogin} />
                     <Route path="/userSignup" component = {UserSignUp} />
                     <Route path="/MyProfile" component = {MyProfile} />
+                    <Route path="/userLogout" exact component = {UserLogout} />
+                    <Route path="/userDelete" exact component = {UserDelete} />
                     <Footer />
                 </div>
         )

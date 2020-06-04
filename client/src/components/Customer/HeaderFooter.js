@@ -1,16 +1,39 @@
-import React, {Component } from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './stylesheets/HeaderFooter.module.css';
 import Logo from './images/logo1.png';
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        const token = localStorage.getItem("token");
+        // const currentUserStorage = localStorage.getItem("currentUser");
+        // this.safelyParseJSON = this.safelyParseJSON.bind(this)
+        // const currentUser=this.safelyParseJSON(currentUserStorage)
+        // this.state = {
+        //     currentUser: currentUser
+        // };
+    }
+
+    safelyParseJSON = (json) => {
+        var parsed
+        try {
+            parsed = JSON.parse(json)
+        } catch (e) {
+            // Oh well, but whatever...
+        }
+
+        return parsed // Could be undefined!
+    }
+
     render() {
+
         return (
             <div className={styles.Appheader}>
 
                 <div className={styles.Appheaderleft}>
                     <Link to="/">
-                    <img className={styles.Applogo} src={Logo} alt="logo" /></Link>
+                        <img className={styles.Applogo} src={Logo} alt="logo" /></Link>
                     <input className={styles.searchbox} type="text" placeholder="Search for Movies" />
                 </div>
 
@@ -19,10 +42,21 @@ class Header extends Component {
                         <option>Hyderabad</option>
                         <option>Gwalior</option>
                     </select>
-                    <Link to='/userLogin'>
-                    <button>SignIn</button></Link>
-                    <Link to='/MyProfile'>
-                    <button>MyProfile</button></Link>
+                    { !localStorage.getItem("token") &&
+                        <Link to='/userLogin'>
+                            <button>SignIn</button></Link>
+                    }
+                    {localStorage.getItem("token") &&
+                        <>
+                            <Link to='/MyProfile'>
+                                <button>MyProfile</button>
+                            </Link>
+                            <Link to='/userLogout'>
+                                <button>SignOut</button>
+                            </Link>
+                        </>
+                    }
+
                 </div>
 
             </div>
@@ -48,7 +82,7 @@ class Footer extends Component {
                     <a href="www.linkedin.com" className={`fa fa-twitter ${styles.fa} ${styles.fa_linkedin}`}> </a>
                     <a href="www.youtube.com" className={`fa fa-twitter ${styles.fa} ${styles.fa_youtube}`}> </a>
                     <a href="www.instagram.com" className={`fa fa-twitter ${styles.fa} ${styles.fa_instagram}`}> </a>
-                    </div>
+                </div>
             </div>
         )
     }

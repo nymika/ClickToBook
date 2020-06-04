@@ -2,55 +2,61 @@ import React, { Component } from 'react';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 
 import UserApp from "./Customer/UserApp";
-import TheatreOwnerPage from "./Theatre Owner/TheatreOwnerPage"
 import AdminPage from "./Admin/AdminPage"
-//import {callAPI} from './services/auth.services'
+import VendorApp from './Theatre Owner/VendorApp';
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { apiResponse: "" };
+        this.state = {
+            userType: ""
+        };
+        this.safelyParseJSON = this.safelyParseJSON.bind(this)
     }
 
-    callAPI = () => {
-        fetch("http://localhost:3001/testAPI")
-            .then(res => res.text())
-            .then(res => this.setState({ apiResponse: res }));
+    safelyParseJSON = (json) => {
+        var parsed
+        try {
+            parsed = JSON.parse(json)
+        } catch (e) {
+            // Oh well, but whatever...
+        }
+        return parsed // Could be undefined!
     }
 
     componentDidMount() {
-        const res = this.callAPI();
-        this.setState({ apiResponse: res })
+        const currentUserStorage = localStorage.getItem("currentUser");
+        const currentUser = this.safelyParseJSON(currentUserStorage);
+        if (currentUser) {
+            this.setState({ userType: currentUser.userType })
+        }
     }
     render() {
-        return (
-            <BrowserRouter>
-                <div>
-                    <p className="App-intro">HI  {this.state.apiResponse}</p>
-                    <ul>
-                        <li><Link to="/">Customer</Link></li>
-                        <li><Link to={{
-                            pathname: '/TheatreOwnerPage'
-                        }}>Theatre Owner Page</Link></li>
-                        <li><Link to="/AdminPage">Admin Page</Link></li>
-                    </ul>
+        if (this.state.userType == 'vendor')
+            return (
+                <BrowserRouter>
+                    <div>
+                        <VendorApp />
+                    </div>
+                </BrowserRouter>
+            )
+        else if (this.state.userType == 'admin')
+            return (
+                <BrowserRouter>
+                    <div>
+                        <AdminPage />
+                    </div>
+                </BrowserRouter>
+            )
+        else
+            return (
+                <BrowserRouter>
+                    <div>
+                        <UserApp />
+                    </div>
+                </BrowserRouter>
+            )
 
-
-                    {/* <button onClick = { () => {
-                    callAPI().then( res=> {
-                    this.setState({ apiResponse: res }),
-                    console.log(this.state.apiResponse) })}}>click me</button> */}
-
-
-                    <p>Parts left out are  linking genres to movies, search feature, location feature, login page, checkout page</p>
-                </div>
-                <Switch>
-                    <Route path="/TheatreOwnerPage" component={TheatreOwnerPage} />
-                    <Route path="/AdminPage" component={AdminPage} />
-                    <Route path="/" component={UserApp} />
-                </Switch>
-            </BrowserRouter>
-        )
     }
 }
 

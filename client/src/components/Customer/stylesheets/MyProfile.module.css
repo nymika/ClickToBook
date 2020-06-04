@@ -67,7 +67,7 @@
 
 .inputbox {
     height : 30px;
-    margin : 2%;
+    margin-top : 2%;
     /* border: 2px solid black; */
 }
 
@@ -101,4 +101,16 @@
     height : 45px;
     width : 190px;
     border-radius: 10%;
+}
+
+.warning {
+    color : red;
+    /* border : 2px solid black; */
+    margin : -15px;
+}
+
+.usertype {
+    height : 40px;
+    width : 200px;
+    margin-bottom : 4%;
 }

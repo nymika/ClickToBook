@@ -32,6 +32,12 @@ class UserSignup extends Component {
         
         //Password
         let password = this.state.password;
+        let repass = this.state.repassword;
+        // if(password!==repass)
+        // {
+        //     formIsValid = false;
+        //     errors["password"] = "* Passwords don't match.";
+        // }
         if (password.length === 0) {
             formIsValid = false;
             errors["password"] = "* Cannot be empty";
@@ -64,8 +70,8 @@ class UserSignup extends Component {
     createUserAPIHandler = (e) => {
         e.preventDefault()
         if (this.handleValidation()) {
-            console.log('validation successful!');
-            console.log(this.state);
+            // console.log('validation successful!');
+            // console.log(this.state);
             const user = {
                 firstname: this.state.firstname,
                 lastname: this.state.lastname,
@@ -75,7 +81,11 @@ class UserSignup extends Component {
             };
             axios.post('http://localhost:3001/users/signup', user)
                 .then(response => {
+                    console.log('signed up!')
                     console.log(response.data)
+                    localStorage.setItem("currentUser",JSON.stringify(response.data.user))
+                    localStorage.setItem("token",response.data.token)
+                    this.props.history.replace('/');
                 }).catch((e) => alert(e));
             this.setState({
                 firstname: '',
