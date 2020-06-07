@@ -1,7 +1,7 @@
 const express=require('express')
 const Movie=require('../models/movie')
 const router=new express.Router()
-const auth=require('../middlewares/authVendor')
+const auth=require('../middlewares/authAdmin')
 
 const imdb=require('imdb-api')
 const cli=new imdb.Client({apiKey:'e3e70ce0'})
@@ -78,7 +78,7 @@ router.delete('/deletemovie/:id',auth,async(req,res)=>{
     
     try
     {
-
+        
         const movie=await Movie.findById(id1)
         if(!movie)
         {

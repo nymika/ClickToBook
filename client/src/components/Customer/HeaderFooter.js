@@ -4,16 +4,16 @@ import styles from './stylesheets/HeaderFooter.module.css';
 import Logo from './images/logo1.png';
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-        const token = localStorage.getItem("token");
-        // const currentUserStorage = localStorage.getItem("currentUser");
-        // this.safelyParseJSON = this.safelyParseJSON.bind(this)
-        // const currentUser=this.safelyParseJSON(currentUserStorage)
-        // this.state = {
-        //     currentUser: currentUser
-        // };
-    }
+    // constructor(props) {
+    //     super(props);
+    //     // const token = localStorage.getItem("token");
+    //     // const currentUserStorage = localStorage.getItem("currentUser");
+    //     // this.safelyParseJSON = this.safelyParseJSON.bind(this)
+    //     // const currentUser=this.safelyParseJSON(currentUserStorage)
+    //     // this.state = {
+    //     //     currentUser: currentUser
+    //     // };
+    // }
 
     safelyParseJSON = (json) => {
         var parsed

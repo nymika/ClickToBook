@@ -9,17 +9,17 @@ import slider3 from './images/slider3.jpg';/*/static/media/slider3.b4d7fdc0.jpg*
 import slider4 from './images/slider4.jpg';/*/static/media/slider4.b1c9f471.jpg*/
 import slider5 from './images/slider5.jpg';/*/static/media/slider5.06f2f695.jpg*/
 
-const slideImages = [
-    slider1,
-    slider2,
-    slider3,
-    slider4,
-    slider5
-    // '../images/slider2.jpg',
-    // '/static/media/slider3.b4d7fdc0.jpg',
-    // {src : '/static/media/slider4.b1c9f471.jpg'},
-    // {src : '../images/slider5.jpg'}
-];
+// const slideImages = [
+//     slider1,
+//     slider2,
+//     slider3,
+//     slider4,
+//     slider5
+//     // '../images/slider2.jpg',
+//     // '/static/media/slider3.b4d7fdc0.jpg',
+//     // {src : '/static/media/slider4.b1c9f471.jpg'},
+//     // {src : '../images/slider5.jpg'}
+// ];
 
 const properties = {
     duration: 2000,

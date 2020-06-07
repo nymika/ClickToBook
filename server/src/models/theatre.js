@@ -17,7 +17,7 @@ const theatreSchema=new Schema({
     },
     brandName:{
         type:String,
-        required:true
+        //required:true
     },
     owner:{
         type:Schema.Types.ObjectId,
@@ -58,20 +58,17 @@ const theatreSchema=new Schema({
     leaseInfo:{
         startDate:{
             type:Date,
-            default:Date.now 
+            default:"2000-01-01"
         },
         lastDate:{
-            type:Date
+            type:Date,
+            default:"2000-02-02"
         }
-        ///validation
-        //amount
     }
     
 })
 
-theatreSchema.virtual('totalSlot',{
-
-})
+//Cascade deleting code
 
 
 const Theatre=mongoose.model('Theatre',theatreSchema)

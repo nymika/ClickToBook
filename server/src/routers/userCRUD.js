@@ -7,10 +7,9 @@ const router=new express.Router()
 
 //SIGN UP
 router.post('/users/signup',async(req,res)=>{
-    console.log(req.body);
     const email=req.body.email;
     const password=req.body.password
-    console.log(email,password);
+
     try{
         const user=await new User({email,password});
         await user.save();
@@ -60,6 +59,7 @@ router.put('/users/me',auth,async (req,res)=>{
             user[update]=req.body[update]
         )
         await user.save();
+        console.log(user.address.city);
         return res.status(200).send(user)
     }catch(e){
         return res.status(400).send(e);
@@ -83,7 +83,7 @@ router.post('/users/logout',auth,async(req,res)=>{
             return token.token!==req.token
         })
         await req.user.save(); 
-        res.send('logged out!');
+        res.send();
     }catch(e){
         res.status(500).send()
     }

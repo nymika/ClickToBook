@@ -93,9 +93,9 @@ class UpdateProfile extends Component {
                 userType: this.state.userType,
             };
             axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
-            axios.put('http://localhost:3001/users/me', user)
+            axios.put('http://localhost:3000/users/me', user)
                 .then(response => {
-                    console.log('updated!')
+                    alert('Profile updated!')
                     console.log(response.data)
                     const firstname = response.data.name.split(" ")[0];
                     const lastname = response.data.name.split(" ")[1];                    
@@ -112,6 +112,8 @@ class UpdateProfile extends Component {
                     console.log('state is', this.state)
                     console.log(response.data);
                     localStorage.setItem("currentUser", JSON.stringify(response.data))
+                    this.props.history.replace('/');
+                    window.location.reload(false);
                 }).catch((e) => alert(e));
         }
         else {
@@ -177,17 +179,18 @@ class UpdateProfile extends Component {
                     <select className={styles.usertype} value={this.state.userType} onChange={this.updateUserState} name="userType">
                         <option selected value="customer">Customer</option>
                         <option value="vendor">TheatreOwner</option>
+                        <option value="admin">Admin</option>
                     </select>
                 </div>
                 <div>
                     <button type="submit" className={styles.submitbtn} onClick={this.UserUpdateAPIHandler}>Update</button>
                 </div>
                 <br /><br />
-                <div>
+                {/* <div>
                     <Link to='/userDelete'>
                         <button type="submit" className={styles.submitbtn}>Delete Account</button>
                     </Link>
-                </div>
+                </div> */}
             </div>
         )
     }

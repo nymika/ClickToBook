@@ -67,13 +67,14 @@ class UserLogin extends Component {
                 email: this.state.email,
                 password: this.state.password,
             };
-            axios.post('http://localhost:3001/users/login', user)
+            axios.post('http://localhost:3000/users/login', user)
                 .then(response => {
                     console.log('logged in!')
                     console.log(response.data)
                     localStorage.setItem("currentUser",JSON.stringify(response.data.user))
                     localStorage.setItem("token",response.data.token)
                     this.props.history.replace('/');
+                    window.location.reload(true);
                 }).catch((e) => alert(e));
             this.setState({
                 email: '',

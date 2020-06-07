@@ -5,12 +5,6 @@ import axios from 'axios';
 import styles from './stylesheets/HomePage.module.css'
 
 import Movie from "./Movie";
-import deadpool from "./images/deadpool.jpg";
-import alice from "./images/alice.jpg";
-import harrypotter from "./images/deathly-hallows-p2-2.jpg";
-import FF from "./images/fast-five-2.jpg";
-import batman from "./images/batman-v-superman-dawn-of-justice-3.jpg";
-import alpha from "./images/alpha-alert-1.jpg";
 
 
 class AllMovies extends Component {
@@ -29,7 +23,7 @@ class AllMovies extends Component {
     }
 
     ShowMoviesAPIHandler = () => {
-        axios.get('http://localhost:3001/getmovies')
+        axios.get('http://localhost:3000/getmovies')
             .then(response => {
                 // console.log('show movies done')
                 this.setState({
@@ -37,6 +31,7 @@ class AllMovies extends Component {
                 });
                 // console.log(this.state.movies);
             }).catch((e) => alert(e));
+
     }
 
     componentDidMount() {

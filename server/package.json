@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "mongo": "/home/nymika/Documents/webd/MongoDB/mongodb/bin/mongod --dbpath=/home/nymika/Documents/webd/MongoDB/mongodb-data"
+    "mongo": "/home/nymika/Documents/webd/MongoDB/mongodb/bin/mongod --dbpath=/home/nymika/Documents/webd/MongoDB/mongodb-data",
+    "newmongo" : "/home/nymika/Documents/ClickToBook/clicktobook/database/mongodb/bin/mongod --dbpath=/home/nymika/Documents/ClickToBook/clicktobook/database/data"
   },
   "keywords": [],
   "author": "",

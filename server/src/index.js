@@ -12,13 +12,11 @@ const showTimeCRUDRouter=require('./routers/showTimeCRUD')
 const basicFunctionalityRouter=require('./routers/basicFunctionality')
 const userCRUDRouter=require('./routers/userCRUD')
 const theatreRouter=require('./routers/theatre')
-var testAPIRouter = require("./routers/testAPI");
 var cors = require("cors");
-const port=process.env.PORT || 3001
+const port=process.env.PORT || 3000
 
 app.use(express.json())
 app.use(cors());
-app.use("/testAPI", testAPIRouter);
 app.use(homeRouter)
 app.use(movieCRUDRouter)
 app.use(theatreCRUDRouter)

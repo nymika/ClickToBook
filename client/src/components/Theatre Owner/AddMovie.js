@@ -24,9 +24,9 @@ class AddMovie extends Component {
             name: this.state.movieName
         };
         console.log(movie);
-        axios.post('http://localhost:3001/addmovie', movie)
+        axios.post('http://localhost:3000/addmovie', movie)
             .then(response => {
-                console.log('movie added!')
+                alert('A movie is added!')
                 console.log(response.data)
             }).catch((e) => alert(e));
         this.setState({

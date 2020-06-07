@@ -29,7 +29,7 @@ class MovieListing extends Component {
     }
 
     ShowMoviesAPIHandler = () => {
-        axios.get('http://localhost:3001/getmovies')
+        axios.get('http://localhost:3000/getmovies')
             .then(response => {
                 console.log('show movies done')
                 this.setState({
@@ -60,9 +60,10 @@ class MovieListing extends Component {
                                     Starring={movie.actors}
                                     Genre={movie.genres} />,
 
-                                <button className={styles.Delete}
-                                    onClick={() => this.deleteMovieHandler(index)}>
-                                    Delete</button>]
+                                // <button className={styles.Delete}
+                                //     onClick={() => this.deleteMovieHandler(index)}>
+                                //     Delete</button>
+                            ]
                             )
                         })}
                     </div>

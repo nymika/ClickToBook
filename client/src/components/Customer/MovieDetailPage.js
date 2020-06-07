@@ -22,7 +22,7 @@ class MovieDetailPage extends Component {
     }
 
     ShowMoviesAPIHandler = () => {
-        axios.get('http://localhost:3001/getmovies')
+        axios.get('http://localhost:3000/getmovies')
             .then(response => {
                 this.setState({
                     movies: response.data

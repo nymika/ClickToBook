@@ -32,7 +32,7 @@ class UserSignup extends Component {
         
         //Password
         let password = this.state.password;
-        let repass = this.state.repassword;
+        //let repass = this.state.repassword;
         // if(password!==repass)
         // {
         //     formIsValid = false;
@@ -79,13 +79,14 @@ class UserSignup extends Component {
                 email: this.state.email,
                 password: this.state.password,
             };
-            axios.post('http://localhost:3001/users/signup', user)
+            axios.post('http://localhost:3000/users/signup', user)
                 .then(response => {
                     console.log('signed up!')
                     console.log(response.data)
                     localStorage.setItem("currentUser",JSON.stringify(response.data.user))
                     localStorage.setItem("token",response.data.token)
                     this.props.history.replace('/');
+                    window.location.reload(false);
                 }).catch((e) => alert(e));
             this.setState({
                 firstname: '',

@@ -30,7 +30,7 @@ class Grid extends Component {
                 <Route path="/AT" exact component={AddTheatre} />
                 <Route path="/AS" exact component={AddShow} />
                 <Route path="/ML" exact component={MovieListing} />
-                <Route path="/TL" exact component={TheatreListing} />
+                <Route path="/TL" component={TheatreListing} />
                 <Route path="/Sub" exact component={Subscription} />
             </BrowserRouter>
         )

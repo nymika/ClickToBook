@@ -12,8 +12,6 @@ import UserSignUp from './userSignup';
 import UserLogout from './userLogout';
 import UserDelete from './userDelete';
 
-//import {callAPI} from '../services/auth.services'
-
 class UserApp extends Component {
     render() {
         return (
@@ -31,8 +29,8 @@ class UserApp extends Component {
                             <li><Link to ="/andsign"> User Signup</Link></li>
                         </ul>
                     </div> */}
-                    {/* <button onClick={() => callAPI()}>click moee</button> */
-                    <Route path="/" exact component = {HomePage} /> }
+                    {/* <button onClick={() => callAPI()}>click moee</button> */}
+                    <Route path="/" exact component = {HomePage} /> 
                     <Route path="/MovieDetailPage/:id" component = {MovieDetailPage } />
                     <Route path="/userLogin" exact component = {UserLogin} />
                     <Route path="/userSignup" component = {UserSignUp} />

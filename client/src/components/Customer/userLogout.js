@@ -37,12 +37,13 @@ class UserLogout extends Component {
         // , {headers : {authorization: `bearer ${localStorage.getItem("token")}` }}
         axios.defaults.headers.common['Authorization'] = localStorage.getItem("token")
         console.log('token is', localStorage.getItem("token"));
-        axios.post('http://localhost:3001/users/logout', user)
+        axios.post('http://localhost:3000/users/logout', user)
             .then(response => {
                 console.log(response.data)
                 localStorage.removeItem("currentUser");
                 localStorage.removeItem("token");
                 this.props.history.replace('/');
+                window.location.reload(false);
             }).catch((e) => alert(e));
     }
 

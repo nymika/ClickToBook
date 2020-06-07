@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter} from 'react-router-dom';
 
 import UserApp from "./Customer/UserApp";
 import AdminPage from "./Admin/AdminPage"
@@ -31,8 +31,9 @@ class App extends Component {
             this.setState({ userType: currentUser.userType })
         }
     }
+
     render() {
-        if (this.state.userType == 'vendor')
+        if (this.state.userType === 'vendor')
             return (
                 <BrowserRouter>
                     <div>
@@ -40,7 +41,7 @@ class App extends Component {
                     </div>
                 </BrowserRouter>
             )
-        else if (this.state.userType == 'admin')
+        else if (this.state.userType === 'admin')
             return (
                 <BrowserRouter>
                     <div>
