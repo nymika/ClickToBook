@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, NavLink } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -38,7 +38,7 @@ class TheatreListing extends Component {
         axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
         const body = {
             leaseInfo: {
-                lastDate : '2022-06-17'
+                lastDate: '2022-06-17'
             }
         }
         axios.put(`http://localhost:3000/theatres/update/${theatre._id}`, body)
@@ -52,10 +52,10 @@ class TheatreListing extends Component {
     DeleteTheatreAPIHandler = (theatre) => {
         axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
         const body = {
-            id : theatre._id
+            id: theatre._id
         }
         console.log(body)
-        axios.delete('http://localhost:3000/theatres', body )
+        axios.delete('http://localhost:3000/theatres', body)
             .then(response => {
                 console.log('deletion done')
                 console.log(response.data)
@@ -88,11 +88,12 @@ class TheatreListing extends Component {
                                     Aseat={theatre.seatInfo.A}
                                     Bseat={theatre.seatInfo.B}
                                 // Screens={theatre.Screens}
-                                />,
+                                />
 
                                 <button className={styles.Delete}
                                     onClick={() => this.DeleteTheatreAPIHandler(theatre)}>
                                     Delete</button>
+                                <br></br>
                             </div>
                         )
                     })}
@@ -104,6 +105,7 @@ class TheatreListing extends Component {
                     {this.state.active.map((theatre, index) => {
                         return (
                             <div>
+                                
                                 <Theatre
                                     id={theatre._id}
                                     Title={theatre.name}
@@ -116,11 +118,18 @@ class TheatreListing extends Component {
                                     Aseat={theatre.seatInfo.A}
                                     Bseat={theatre.seatInfo.B}
                                 // Screens={theatre.Screens}
-                                />,
+                                />
+                                
+                                <Link to ={`/TheatreDetailPage/${theatre._id}`}
+                                key={theatre._id}>
+                                <button className={styles.Subscribe}
+                                    >See More</button>
+                                    </Link>
 
                                 <button className={styles.Delete}
                                     onClick={() => this.DeleteTheatreAPIHandler(theatre)}>
                                     Delete</button>
+                                <br></br>
                             </div>
                         )
                     })}
@@ -144,7 +153,7 @@ class TheatreListing extends Component {
                                     Aseat={theatre.seatInfo.A}
                                     Bseat={theatre.seatInfo.B}
                                 // Screens={theatre.Screens}
-                                />,
+                                />
 
                                 <button className={styles.Delete}
                                     onClick={() => this.DeleteTheatreAPIHandler(theatre)}>
@@ -153,6 +162,7 @@ class TheatreListing extends Component {
                                 <button className={styles.Subscribe}
                                     onClick={() => this.SubscribeTheatreAPIHandler(theatre)}>
                                     Subscribe</button>
+                                <br></br>
                             </div>
                         )
                     })}
@@ -165,16 +175,36 @@ class TheatreListing extends Component {
                 <div className={styles.MovieListing}>
                     <div className={styles.Summaryreviewsheading}>
                         <ul className={styles.Summaryreviews}>
-                            <Link className={styles.SummaryLink} to={this.props.match.url + "/unapproved"}><li className={styles.summaryreviewslist}>UNAPPROVED THEATRES</li></Link>
-                            <Link className={styles.SummaryLink} to={this.props.match.url}><li className={styles.summaryreviewslist}>ACTIVE THEATRES</li></Link>
-                            <Link className={styles.SummaryLink} to={this.props.match.url + "/unsubscribed"}><li className={styles.summaryreviewslist}>UNSUBSCRIBED THEATRES</li></Link>
+                            <NavLink className={styles.SummaryLink}
+                                to={this.props.match.url + "/unapproved"}
+                                activeStyle={{
+                                    "borderBottom": "2px solid #4e5565",
+                                    "color": "white",
+                                    "backgroundColor": "#282c34"
+                                }}><li className={styles.summaryreviewslist}>UNAPPROVED THEATRES</li></NavLink>
+                            <NavLink className={styles.SummaryLink}
+                                to={this.props.match.url}
+                                activeStyle={{
+                                    "borderBottom": "2px solid #4e5565",
+                                    "color": "white",
+                                    "backgroundColor": "#282c34"
+                                }} exact
+                            ><li className={styles.summaryreviewslist}>ACTIVE THEATRES</li></NavLink>
+                            <NavLink className={styles.SummaryLink}
+                                to={this.props.match.url + "/unsubscribed"}
+                                activeStyle={{
+                                    "borderBottom": "2px solid #4e5565",
+                                    "color": "white",
+                                    "backgroundColor": "#282c34"
+                                }}
+                            ><li className={styles.summaryreviewslist}>UNSUBSCRIBED THEATRES</li></NavLink>
                         </ul>
                     </div>
 
                     <div className={styles.Moviesummarybox}>
                         <Route path="/TL" exact render={() => <div>{activetheatres} </div>} />
-                        <Route path="/TL/unapproved" exact render={() => <div>{unapprovedtheatres} </div>} />
-                        <Route path="/TL/unsubscribed" exact render={() => <div>{unsubscribedtheatres} </div>} />
+                        <Route path="/TL/unapproved" render={() => <div>{unapprovedtheatres} </div>} />
+                        <Route path="/TL/unsubscribed" render={() => <div>{unsubscribedtheatres} </div>} />
                     </div>
                 </div>
             </div>

@@ -50,6 +50,7 @@ class AddTheatre extends Component {
             slotInfo: slots
         })
     }
+    
     addShowbtn = (event) => {
         this.setState((prevState) => ({
             slotInfo: [...prevState.slotInfo, { startTime: '', endTime: '' }],

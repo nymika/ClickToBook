@@ -35,5 +35,6 @@
   .posterimage {
     max-height : 200px;
     max-width : 200px;
+    margin : 18px;
     border-radius: 5%;
   }

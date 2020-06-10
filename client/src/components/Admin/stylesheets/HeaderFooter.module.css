@@ -6,6 +6,8 @@
     align-items: center;
     /*justify-content: right*/;
     font-size: calc(10px + 2vmin);
+    border-bottom: 1px solid white;
+    max-height : 65px
 }
 
 .Appheaderleft {
@@ -25,6 +27,22 @@
 
 .searchbox {
     margin : 15px;
+}
+.search {
+    max-height : 32px;
+    max-width : 32px;
+    position: absolute;
+    bottom : 3px;
+    right : 380px;
+    /* border: 1px solid white; */
+    
+}
+.button {
+    padding : 3px;
+    margin-left : 10px;
+    width : 115px;
+    color : #282c34;
+    font-weight: bold;
 }
 
 .about {

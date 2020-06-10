@@ -2,12 +2,14 @@ const express=require('express')
 const Movie=require('../models/movie')
 const router=new express.Router()
 //Trending Movies
-console.log("in home file")
-router.get('/trending',async(req,res)=>{ 
+
+router.get('/',async(req,res)=>{ 
+    const today=new Date()
+    //console.log(today)
     try
     {
         const filter={
-            rating:{$gt:8}
+            day:{$gt:today}
         }
         const projection={
             title:1,
@@ -15,22 +17,36 @@ router.get('/trending',async(req,res)=>{
             poster:1,
             releaseDate:1
         }
-        const movie=await Movie.find(filter,projection).sort({rating:-1}).limit(10)
-        if(!movie.length)
-            return res.status(404).send()
-        return res.send(movie)
+        const trendingMovies=await Movie.find(filter,projection).sort({rating:-1}).limit(10)
+        const filter1={
+        releaseDate:{$lt:today},
+        day:{$gt:today}
+        }
+        const projection1={
+            title:1,
+            rating:1,
+            poster:1,
+            releaseDate:1
+        }
+        const latestMovies=await Movie.find(filter1,projection1).sort({releaseDate:-1})
+
+        return res.send({latestMovies,trendingMovies})
     }
     catch(e)
     {
         res.status(501).send(e)
     }   
 })
+
 //Genre
-router.get('/genre',async(req,res)=>{
-    const genre=req.body.genre.toLowerCase()
+router.put('/genre',async(req,res)=>{
+    const today=new Date()
+    const genre=req.body.genre
     try{
         const filter={
-            genres:genre
+            genres:genre,
+            releaseDate:{$lt:today},
+            day:{$gt:today}
         }
         const projection={
             title:1,
@@ -38,11 +54,11 @@ router.get('/genre',async(req,res)=>{
             poster:1,
             releaseDate:1
         }
-        const movies=await Movie.find(filter,projection)
+        const movies=await Movie.find(filter,projection).sort({releaseDate:-1})
         console.log(movies.length)
         if(!movies.length)
         {
-            return res.status(404).send()
+            return res.status(200).send()
         }
         return res.send(movies)
 
@@ -51,12 +67,17 @@ router.get('/genre',async(req,res)=>{
         return res.status(501).send(e)
     }
 })
+
 //Language
-router.get('/language',async(req,res)=>{
-    const language=req.body.language.toLowerCase()
+router.put('/language',async(req,res)=>{
+    const today=new Date()
+    //const language=req.body.language.toLowerCase()
+    const language=req.body.language    
     try{
         const filter={
-            language
+            language,
+            releaseDate:{$lt:today},
+            day:{$gt:today}
         }
         const projection={
             title:1,
@@ -67,7 +88,7 @@ router.get('/language',async(req,res)=>{
         const movies=await Movie.find(filter,projection)
         if(!movies.length)
         {
-            return res.status(404).send()
+            return res.status(200).send()
         }
         return res.send(movies)
 
@@ -77,28 +98,4 @@ router.get('/language',async(req,res)=>{
     }
 })
 
-//Latest
-router.get('/latest',async (req,res)=>{
-    const today=new Date()
-    const filter={
-        releaseDate:{$lt:today}
-    }
-    const projection={
-        title:1,
-        rating:1,
-        poster:1,
-        releaseDate:1
-    }
-    try{
-        const movies=await Movie.find(filter,projection).sort({releaseDate:-1})
-        if(!movies.length)
-        {
-            return res.status(404).send()
-        }
-        return res.send(movies)
-    }catch(e)
-    {
-        return res.status(501).send(e)
-    }
-})
 module.exports=router

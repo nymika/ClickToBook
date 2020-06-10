@@ -9,13 +9,15 @@ class UpdateProfile extends Component {
         super(props);
 
         this.state = {
-            firstname: '',
-            lastname: '',
+            firstName: '',
+            lastName: '',
             email: '',
             phoneNumber: '',
             password: '',
             repassword: '',
             userType: '',
+            gender: '',
+            DOB: '',
             errors: {}
         };
         this.safelyParseJSON = this.safelyParseJSON.bind(this)
@@ -85,32 +87,41 @@ class UpdateProfile extends Component {
         e.preventDefault();
         if (this.handleValidation()) {
             // console.log('validation successful!');
-            // console.log(this.state);
+            console.log(this.state);
             const user = {
-                name: this.state.firstname + " " + this.state.lastname,
+                name: {
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName
+                },
                 phoneNumber: this.state.phoneNumber,
                 email: this.state.email,
                 userType: this.state.userType,
+                gender : this.state.gender,
+                DOB : this.state.DOB
             };
+            console.log(user)
             axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
             axios.put('http://localhost:3000/users/me', user)
                 .then(response => {
-                    alert('Profile updated!')
+
                     console.log(response.data)
-                    const firstname = response.data.name.split(" ")[0];
-                    const lastname = response.data.name.split(" ")[1];                    
                     this.setState({
-                        firstname: firstname,
-                        lastname: lastname,
+                        name: {
+                            firstName: response.data.name.firstName,
+                            lastname: response.data.name.lastName,
+                        },
                         email: response.data.email,
                         userType: response.data.userType,
-                        phoneNumber: response.data.phoneNumber,                      
+                        phoneNumber: response.data.phoneNumber,
+                        gender : response.data.gender,
+                        DOB : response.data.DOB
                         // password: currentUser.userType,
                         // repassword: '',
                         // errors: {}
                     })
                     console.log('state is', this.state)
                     console.log(response.data);
+                    alert('Profile updated!')
                     localStorage.setItem("currentUser", JSON.stringify(response.data))
                     this.props.history.replace('/');
                     window.location.reload(false);
@@ -124,20 +135,17 @@ class UpdateProfile extends Component {
     componentDidMount() {
         const currentUserStorage = localStorage.getItem("currentUser");
         const currentUser = this.safelyParseJSON(currentUserStorage);
-        const firstname = '';
-            const lastname = ''
-        if(currentUser.name)
-        {
-        const firstname = currentUser.name.split(" ")[0];
-        const lastname = currentUser.name.split(" ")[1];
-        }
-        
+
         this.setState({
-            firstname: firstname,
-            lastname: lastname,
+
+            firstName: currentUser.name.firstName,
+            lastName: currentUser.name.lastName,
+
             email: currentUser.email,
             phoneNumber: currentUser.phoneNumber,
-            userType: currentUser.userType
+            userType: currentUser.userType,
+            gender : currentUser.gender,
+            DOB : currentUser.DOB
             // password: currentUser.password,
         });
     }
@@ -146,8 +154,8 @@ class UpdateProfile extends Component {
         return (
             <div className={styles.profileBox}>
                 <div className={styles.myName}>
-                    <input type="text" name="firstname" value={this.state.firstname} onChange={this.updateUserState} className={styles.inputbox} id="myname" placeholder="First Name"></input>
-                    <input type="text" name="lastname" value={this.state.lastname} onChange={this.updateUserState} className={styles.inputbox} id="mylastname" placeholder="Last Name"></input>
+                    <input type="text" name="firstName" value={this.state.firstName} onChange={this.updateUserState} className={styles.inputbox} id="myname" placeholder="First Name"></input>
+                    <input type="text" name="lastName" value={this.state.lastName} onChange={this.updateUserState} className={styles.inputbox} id="mylastname" placeholder="Last Name"></input>
                 </div>
                 <div className={styles.mymobile}>
                     <input type="text" name="phoneNumber" value={this.state.phoneNumber} onChange={this.updateUserState} className={styles.inputbox} id="mobile" placeholder="Mobile"></input>
@@ -157,7 +165,7 @@ class UpdateProfile extends Component {
                     <br /><span className={styles.warning}>{this.state.errors["email"]}</span>
                 </div>
                 <div className={styles.password}>
-                    <div className={styles.mygender}>
+                    {/* <div className={styles.mygender}>
                         <p className={styles.greywords}>Gender ?</p>
                         <input type="radio" name="gender" id="male" value="male" checked></input>
                         <label for="male" className={styles.genderlabel}>Male</label>
@@ -167,9 +175,9 @@ class UpdateProfile extends Component {
                         <label for="others" className={styles.genderlabel}>Others</label>
                     </div>
                     <div className={styles.mybd}>
-                        <input type="date" id="mybirthday"></input>
+                        <input type="date" name='DOB' value={this.state.DOB} id="mybirthday"></input>
                         <p className={styles.greywords}>It's my birthday</p>
-                    </div>
+                    </div> */}
                     {/* <p className={styles.genderlabel}>Change Password ?</p>
                     <input type="text" name="password" value={this.state.password} onChange={this.updateUserState} className={styles.inputbox} id="pass" placeholder="enter new password"></input>
                     <br /><span className={styles.warning}>{this.state.errors["password"]}</span><br /> */}

@@ -99,7 +99,7 @@ class UserLogin extends Component {
                         <input type="text" name="email" value={this.state.email} onChange={this.updateUserState} className={styles.inputbox} placeholder="email@gmail.com"></input>
                         <br /><span className={styles.warning}>{this.state.errors["email"]}</span>
                     </div>
-                    <input type="text" name="password" value={this.state.password} onChange={this.updateUserState} className={styles.inputbox} id="pass" placeholder="enter password"></input>
+                    <input type="password" name="password" value={this.state.password} onChange={this.updateUserState} className={styles.inputbox} id="pass" placeholder="enter password"></input>
                     <br /><span className={styles.warning}>{this.state.errors["password"]}</span>
                     <button type="submit" className={styles.submitbtn} onClick={this.UserLoginAPIHandler}>Login</button>
                 </div>

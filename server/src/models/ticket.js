@@ -11,11 +11,20 @@ const bookingSchema=new Schema({
         type:Schema.Types.ObjectId,
         ref:'User'
     },
-    showTime:{
+    _showTime:{
         type:Schema.Types.ObjectId,
         ref:'ShowTime'
     },
-    seatno:Number,
-    seatType:String,
-    bookingDate:Date
+    seats:[{
+        seatType:String,
+        seatno:[Number]
+    }],
+    price:Number,
+    booking:{
+        type:Date,
+        default:Date.now
+    }
 })
+
+const Ticket=mongoose.model('Ticket',bookingSchema)
+module.exports=Ticket

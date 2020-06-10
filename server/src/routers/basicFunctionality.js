@@ -4,6 +4,8 @@ const router=new express.Router()
 const auth=require('../middlewares/auth')
 
 const Movie=require('../models/movie')
+const ShowTime=require('../models/showTime')
+const Ticket=require('../models/ticket')
 const User=require("../models/user")
 
 
@@ -49,12 +51,13 @@ router.put('/uncomment/:movieid',auth,async(req,res)=>{
 })
 
 //Add rating
-router.put('/addrating/:userid/:movieid',async(req,res)=>{
+router.put('/addrating/:movieid',auth,async(req,res)=>{
     //final rating of movie is not updated yet
     const rating={
         rate:req.body.rate,
         ratedBy:req.user._id
     }
+    //const movie=await Movie.findById(req.params.movieid)
     const movie=await Movie.findByIdAndUpdate(req.params.movieid,{$push:{ratings:rating}},{new:true,runValidators:true})
     if(!movie)
     {
@@ -66,10 +69,10 @@ router.put('/addrating/:userid/:movieid',async(req,res)=>{
 })
 
 //Remove rating
-router.put('/unrate/:userid/:movieid',async(req,res)=>{
+router.put('/unrate/:movieid',auth,async(req,res)=>{
     const rating={
         rate:req.body.rate,
-        ratedBy:req.params.userid
+        ratedBy:req.user._id
     }
     const movie=await Movie.findByIdAndUpdate(req.params.movieid,{$pull:{ratings:rating}},{new:true,runValidators:true})
     if(!movie)
@@ -78,6 +81,25 @@ router.put('/unrate/:userid/:movieid',async(req,res)=>{
        return res.status(404).send()
     }
     return res.status(201).send(movie)
+})
+
+router.get('/bookinghistory',auth,async (req,res)=>{
+    customer=req.user._id
+    const bookedTickets=await Ticket.find({customer})
+                                    .populate({
+                                        path:'_showTime',
+                                        populate:{
+                                            path:'_theatre',
+                                            select:'name location -_id'
+                                        },
+                                        populate:{
+                                            path:'_movie',
+                                            select:'title poster -_id'
+                                        },
+                                        select:"_id" 
+                                    })
+    console.log(bookedTickets)
+    return res.send(bookedTickets)
 })
 
 module.exports=router

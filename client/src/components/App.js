@@ -25,6 +25,7 @@ class App extends Component {
     }
 
     componentDidMount() {
+        document.title = 'SE - ClickToBook';
         const currentUserStorage = localStorage.getItem("currentUser");
         const currentUser = this.safelyParseJSON(currentUserStorage);
         if (currentUser) {

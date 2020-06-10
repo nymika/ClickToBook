@@ -12,7 +12,7 @@ router.get('/theatres',auth,async(req,res)=>{
     try
     {
         const user=req.user;
-        console.log(user.userType)
+        //console.log(user.userType)
         //VENDOR
         
         if(user.userType==="vendor")

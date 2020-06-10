@@ -4,15 +4,15 @@ import React, {Component } from 'react';
 import styles from './stylesheets/MyProfile.module.css'
 
 import ETicket from './ETicket';
-import deadpool from "./images/deadpool.jpg";
-import alice from "./images/alice.jpg";
+// import deadpool from "./images/deadpool.jpg";
+// import alice from "./images/alice.jpg";
 
 class BookingHistory extends Component {
 
     state = {
         bookings : [
-            {id : 'Deadpool', Title : 'Deadpool', Poster : deadpool, dimen : '2D', language : 'Telugu', Theatre : 'BVK', time : '07:45pm', date : '15-DEC-2018', numofseats : '4', seats : 'BALCONY  -  G26, G27, G28, G29', ticketprice : 'RS.700', conveniencefees : 'Rs.50', amountpaid : 'Rs.750', bookingid : 'WKJ6S9J', bookingdatetime : ' DEC 15 2018 02:29PM', confirmationid : 'WKJ6S9J'},
-            {id : 'Alice', Title : 'Alice through the looking glass', Poster : alice, dimen : '2D', language : 'Telugu', Theatre : 'BVK', time : '07:45pm', date : '15-DEC-2018', numofseats : '4', seats : 'BALCONY-G26,G27,G28,G29', ticketprice : 'RS.700', conveniencefees : 'Rs.50', amountpaid : 'Rs.750', bookingid : 'WKJ6S9J', bookingdatetime : ' DEC 15 2018 02:29PM', confirmationid : 'WKJ6S9J' }
+            {id : 'Deadpool', Title : 'Deadpool', Poster : '', dimen : '2D', language : 'Telugu', Theatre : 'BVK', time : '07:45pm', date : '15-DEC-2018', numofseats : '4', seats : 'BALCONY  -  G26, G27, G28, G29', ticketprice : 'RS.700', conveniencefees : 'Rs.50', amountpaid : 'Rs.750', bookingid : 'WKJ6S9J', bookingdatetime : ' DEC 15 2018 02:29PM', confirmationid : 'WKJ6S9J'},
+            {id : 'Alice', Title : 'Alice through the looking glass', Poster : '', dimen : '2D', language : 'Telugu', Theatre : 'BVK', time : '07:45pm', date : '15-DEC-2018', numofseats : '4', seats : 'BALCONY-G26,G27,G28,G29', ticketprice : 'RS.700', conveniencefees : 'Rs.50', amountpaid : 'Rs.750', bookingid : 'WKJ6S9J', bookingdatetime : ' DEC 15 2018 02:29PM', confirmationid : 'WKJ6S9J' }
             ]
     }
 

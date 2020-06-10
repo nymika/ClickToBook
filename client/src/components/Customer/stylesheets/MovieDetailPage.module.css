@@ -89,8 +89,9 @@
     color : #8c8c8c;
     text-decoration: none;
     margin : 3%;
+    padding-top : 2%;
+    padding-bottom: 2%;
     /*border : 2px solid yellow;*/
-    width : 25%;
 }
 
 

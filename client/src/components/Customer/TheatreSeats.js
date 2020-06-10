@@ -1,28 +1,80 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Link } from 'react-router-dom';
+import axios from 'axios';
+
 import './stylesheets/TheatreSeats.css';
 import ETicket from './ETicket';
 
 class TheatreSeats extends Component {
-    componentDidMount() { console.log("theatre seats showed"); }
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             seat: [
-                'A1', 'A2', 'A3', 'A4', 'A5', 'A6',
+                'G1', 'G2', 'G3', 'G4', 'G5', 'G6',
                 'B1', 'B2', 'B3', 'B4', 'B5', 'B6',
-                'C1', 'C2', 'C3', 'C4', 'C5', 'C6'
+                'B7', 'B8', 'B9', 'B10', 'B11', 'B12'
             ],
             seatAvailable: [
-                'A1', 'A2', 'A3', 'A4', 'A5', 'A6',
+                'G1', 'G2', 'G3', 'G4', 'G5', 'G6',
                 'B1', 'B2', 'B3', 'B4', 'B5', 'B6',
-                'C1', 'C2', 'C3', 'C4', 'C5', 'C6'
+                'B7', 'B8', 'B9', 'B10', 'B11', 'B12'
             ],
             seatReserved: [],
             seatSelected: [],
+            seatInfo: {
+                'G1': '',
+                'G2' : '',
+                'G3' : '',
+                'G4' : '',
+                'G5' : '',
+                'G6' : '',
+                'B1' : '',
+                'B2' : '',
+                'B3' : '',
+                'B4' : '',
+                'B5' : '',
+                'B6' : '',
+                'B7' : '',
+                'B8' : '',
+                'B9' : '',
+                'B10' : '',
+                'B11' : '',
+                'B12' : ''
+            }
         }
+    }
+
+    GetSlotInfoAPIHandler = () => {
+        //console.log('entered')
+        axios.get(`http://localhost:3000/ticketbooking/${this.props.slotId}`)
+            .then(response => {
+                console.log(response.data)
+                this.setState({
+                    seatInfo : {
+                        'G1' : response.data.A.availability[0],
+                        'G2' : response.data.A.availability[1],
+                        'G3' : response.data.A.availability[2],
+                        'G4' : response.data.A.availability[3],
+                        'G5' : response.data.A.availability[4],
+                        'G6' : response.data.A.availability[5],
+                        'B1' : response.data.B.availability[0],
+                        'B2' : response.data.B.availability[1],
+                        'B3' : response.data.B.availability[2],
+                        'B4' : response.data.B.availability[3],
+                        'B5' : response.data.B.availability[4],
+                        'B6' : response.data.B.availability[5],
+                        'B7' : response.data.B.availability[6],
+                        'B8' : response.data.B.availability[7],
+                        'B9' : response.data.B.availability[8],
+                        'B10' : response.data.B.availability[9],
+                        'B11' : response.data.B.availability[10],
+                        'B12' : response.data.B.availability[11]
+                    }
+                })
+                console.log(this.state.seatInfo)
+            }).catch((e) => alert(e))
     }
 
     onClickData(seat) {
@@ -56,9 +108,14 @@ class TheatreSeats extends Component {
         // })
     }
 
+    componentDidMount() {
+        //console.log('selected slot is', this.props.slotId)
+        this.GetSlotInfoAPIHandler();
+    }
+
     render() {
         return (
-            <BrowserRouter>
+            <div>
                 <div className="Background">
                     <div className="Box">
                         <DrawGrid
@@ -72,30 +129,32 @@ class TheatreSeats extends Component {
                         />
                     </div>
 
-                    <Link to ={'/GetTickets'}>
-                    <button type="button" onClick={ () => {
-                        console.log(this.state.seatReserved)
-                        window.scrollTo(0,92500)} }>Get Ticket</button>
+                    <Link to={'/GetTickets'}>
+                        <button type="button" onClick={() => {
+                            console.log(this.state.seatReserved)
+                            window.scrollTo(0, 92500)
+                        }}>Get Ticket</button>
                     </Link>
-                    <Route path={"/GetTickets"} render={ () => 
+                    <Route path={"/GetTickets"} render={() =>
+                    
                         <ETicket Title={"Title"}
-                               Poster={"Poster"}
-                               Theatre={"Theatre"}
-                               dimen={"dimen"}
-                               language={"language"}
-                               time={"time"}
-                               date={"date"}
-                               numofseats={this.state.seatReserved.length}
-                               seats={this.state.seatReserved}
-                               ticketprice={"ticketprice"}
-                               conveniencefees={"conveniencefees"}
-                               amountpaid={"amountpaid"}
-                               bookingid={"bookingid"}
-                               bookingdatetime={"bookingdatetime"}
-                               confirmationid={"confirmationid"}/>
+                            Poster={"Poster"}
+                            Theatre={"Theatre"}
+                            dimen={"dimen"}
+                            language={"language"}
+                            time={"time"}
+                            date={"date"}
+                            numofseats={this.state.seatReserved.length}
+                            seats={this.state.seatReserved}
+                            ticketprice={"ticketprice"}
+                            conveniencefees={"conveniencefees"}
+                            amountpaid={"amountpaid"}
+                            bookingid={"bookingid"}
+                            bookingdatetime={"bookingdatetime"}
+                            confirmationid={"confirmationid"} />
                     } />
                 </div>
-            </BrowserRouter>
+            </div>
         )
     }
 }
@@ -114,6 +173,8 @@ class DrawGrid extends Component {
                         </tr>
                     </tbody>
                 </table>
+                <h3>*G - GOLD seats</h3>
+                <h3>*B - Balcony seats</h3>
                 <button type="button" className="btn-success btnmargin" onClick={() => this.props.handleSubmited()}>Confirm Booking</button>
             </div>
         )

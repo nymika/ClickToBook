@@ -5,6 +5,7 @@ import AddTheatre from './AddTheatre';
 import AddShow from './AddShow';
 import MovieListing from './MovieListing';
 import TheatreListing from './TheatreListing';
+import TheatreDetailedPage from './TheatreDetailedPage'
 import Subscription from './Subscription';
 
 import styles from './stylesheets/grid.css';
@@ -12,7 +13,7 @@ import styles from './stylesheets/grid.css';
 class Grid extends Component {
     render() {
         return (
-            <BrowserRouter>
+            <div>
                 <div>
                     <h2 className={styles.welcome}>Welcome Vendor,</h2>
                 </div>
@@ -20,19 +21,20 @@ class Grid extends Component {
                 <div class="grid-container">
                     <div class="grid-item"><Link to="/AM">Add Movie</Link></div>
                     <div class="grid-item"><Link to="/AT">Add Theatre</Link></div>
-                    <div class="grid-item"><Link to="/AS">Add Show</Link></div>
+                    {/* <div class="grid-item"><Link to="/AS">Add Show</Link></div> */}
                     <div class="grid-item"><Link to="/ML">Movie Listing</Link></div>
                     <div class="grid-item"><Link to="/TL">Theatre Listing</Link></div>
-                    <div class="grid-item"><Link to="/Sub">Your Subscription</Link></div>
+                    {/* <div class="grid-item"><Link to="/Sub">Your Subscription</Link></div> */}
                 </div>
 
                 <Route path="/AM" exact component={AddMovie} />
                 <Route path="/AT" exact component={AddTheatre} />
-                <Route path="/AS" exact component={AddShow} />
+                {/* <Route path="/AS" exact component={AddShow} /> */}
                 <Route path="/ML" exact component={MovieListing} />
                 <Route path="/TL" component={TheatreListing} />
-                <Route path="/Sub" exact component={Subscription} />
-            </BrowserRouter>
+                <Route path={["/TheatreDetailPage/:id","/TheatreDetailPage/:id/SlotDetails/:SlotId"]} component = {TheatreDetailedPage } />
+                {/* <Route path="/Sub" exact component={Subscription} /> */}
+            </div>
         )
     }
 }

@@ -33,39 +33,35 @@
 .Summaryreviews {
   list-style-type: none;
   padding-top: 30px;
-  /* border : 2px solid black; */
 }
 .summaryreviewslist {
-  border-bottom: 2px solid #4e5565;
-  padding: 10px;
+  /* border-bottom: 2px solid #4e5565;
+  padding: 10px; */
   display : inline;
 }
 .SummaryLink:hover{
   color : green;
   border : 2px solid #4e5565;
-  padding : 4px;
   text-decoration: underline;
 }
 
-
-.SummaryLink:active {
+/* .summaryreviewslist:visited {
+  color : blue;
+border : 2px solid #4e5565;
+  padding : 4px;
+  text-decoration: underline;
+} */
+/* .SummaryLink:active{
   color : green;
 border : 2px solid #4e5565;
   padding : 4px;
   text-decoration: underline;
-}
-
-.SummaryLink.active {
-  color : yellow;
-  border : 2px solid #4e5565;
-  padding : 4px;
-  text-decoration: underline;
-}
-
+} */
 .SummaryLink {
   color : black;
   text-decoration: none;
   margin : 3%;
-  /*border : 2px solid yellow;*/
+  padding : 1%;
+  border-bottom : 2px solid #4e5565;
   width : 25%;
 }

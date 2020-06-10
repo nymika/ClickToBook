@@ -15,10 +15,11 @@ class VendorApp extends Component {
         return (
             <div className={styles.App}>
                 <Header />
-                <Route path="/" exact component={Grid} />
+                <Route path="/" component={Grid} />
                 <Route path="/MyProfile" component={MyProfile} />
                 <Route path="/userLogout" exact component={UserLogout} />
                 <Route path="/userDelete" exact component={UserDelete} />
+                
                 <Footer />
             </div>
         )

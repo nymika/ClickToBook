@@ -1,28 +1,62 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 import styles from './stylesheets/HeaderFooter.module.css';
-import Logo from './images/logo1.png';
+import Logo from './images/logo9.png';
 
 class Header extends Component {
+    // constructor(props) {
+    //     super(props);
+    //     // const token = localStorage.getItem("token");
+    //     // const currentUserStorage = localStorage.getItem("currentUser");
+    //     // this.safelyParseJSON = this.safelyParseJSON.bind(this)
+    //     // const currentUser=this.safelyParseJSON(currentUserStorage)
+    //     // this.state = {
+    //     //     currentUser: currentUser
+    //     // };
+    // }
+
+    safelyParseJSON = (json) => {
+        var parsed
+        try {
+            parsed = JSON.parse(json)
+        } catch (e) {
+            // Oh well, but whatever...
+        }
+
+        return parsed // Could be undefined!
+    }
+
     render() {
+
         return (
             <div className={styles.Appheader}>
 
                 <div className={styles.Appheaderleft}>
-                <Link to="/">
-                    <img className={styles.Applogo} src={Logo} alt="logo" /></Link>
+                    <Link to="/">
+                        <img className={styles.Applogo} src={Logo} alt="logo" />
+                    </Link>
+                    {/* <input className={styles.searchbox} type="text" placeholder="Search for Movies" /> */}
+
                 </div>
 
                 <div className={styles.Appheaderright}>
-                    {/* <select>
-                        <option>Hyderabad</option>
-                        <option>Gwalior</option>
-                    </select> */}
-                    <Link to='/userLogout'>
-                    <button>SignOut</button></Link>
-                    <Link to='/MyProfile'>
-                    <button>MyProfile</button></Link>
+                    
+                    {!localStorage.getItem("token") &&
+                        <Link to='/userLogin'>
+                            <button className={styles.button}>SignIn</button></Link>
+                    }
+                    {localStorage.getItem("token") &&
+                        <>
+                            <Link to='/MyProfile'>
+                                <button className={styles.button}>MyProfile</button>
+                            </Link>
+                            <Link to='/userLogout'>
+                                <button className={styles.button}>SignOut</button>
+                            </Link>
+                        </>
+                    }
+                    
+
                 </div>
 
             </div>

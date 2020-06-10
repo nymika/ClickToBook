@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './stylesheets/HeaderFooter.module.css';
-import Logo from './images/logo1.png';
+import Logo from './images/logo9.png';
+import search from './images/search.png'
 
 class Header extends Component {
     // constructor(props) {
@@ -33,29 +34,36 @@ class Header extends Component {
 
                 <div className={styles.Appheaderleft}>
                     <Link to="/">
-                        <img className={styles.Applogo} src={Logo} alt="logo" /></Link>
-                    <input className={styles.searchbox} type="text" placeholder="Search for Movies" />
+                        <img className={styles.Applogo} src={Logo} alt="logo" />
+                    </Link>
+                    {/* <input className={styles.searchbox} type="text" placeholder="Search for Movies" /> */}
+
                 </div>
 
                 <div className={styles.Appheaderright}>
-                    <select>
-                        <option>Hyderabad</option>
-                        <option>Gwalior</option>
-                    </select>
-                    { !localStorage.getItem("token") &&
+                    <Link to='/Search'>
+                        {/* <button>Search</button> */}
+                        <img src={search} alt='search' className={styles.search}></img>
+                    </Link>
+
+                    {!localStorage.getItem("token") &&
                         <Link to='/userLogin'>
-                            <button>SignIn</button></Link>
+                            <button className={styles.button}>SignIn</button></Link>
                     }
                     {localStorage.getItem("token") &&
                         <>
                             <Link to='/MyProfile'>
-                                <button>MyProfile</button>
+                                <button className={styles.button}>MyProfile</button>
                             </Link>
                             <Link to='/userLogout'>
-                                <button>SignOut</button>
+                                <button className={styles.button}>SignOut</button>
                             </Link>
                         </>
                     }
+                    <select className={styles.button}>
+                        <option>Hyderabad</option>
+                        <option>Gwalior</option>
+                    </select>
 
                 </div>
 
@@ -77,11 +85,12 @@ class Footer extends Component {
 
                 <div className={styles.Appfooter}>
 
-                    <a href="www.facebook.com" className={`fa fa-facebook ${styles.fa} ${styles.fa_facebook}`}> </a>
-                    <a href="www.twitter.com" className={`fa fa-twitter ${styles.fa} ${styles.fa_twitter}`}> </a>
-                    <a href="www.linkedin.com" className={`fa fa-twitter ${styles.fa} ${styles.fa_linkedin}`}> </a>
-                    <a href="www.youtube.com" className={`fa fa-twitter ${styles.fa} ${styles.fa_youtube}`}> </a>
-                    <a href="www.instagram.com" className={`fa fa-twitter ${styles.fa} ${styles.fa_instagram}`}> </a>
+                    <a href="https://www.facebook.com" className={`fa fa-facebook ${styles.fa} ${styles.fa_facebook}`}> </a>
+                    <a href="https://www.twitter.com" className={`fa fa-twitter ${styles.fa} ${styles.fa_twitter}`}> </a>
+                    <a href="https://www.youtube.com" className={`fa fa-youtube ${styles.fa} ${styles.fa_youtube}`}> </a>
+                    
+                    <a href="https://www.linkedin.com" className={`fa fa-linkedin ${styles.fa} ${styles.fa_linkedin}`}> </a>
+                    <a href="https://www.instagram.com" className={`fa fa-instagram ${styles.fa} ${styles.fa_instagram}`}> </a>
                 </div>
             </div>
         )

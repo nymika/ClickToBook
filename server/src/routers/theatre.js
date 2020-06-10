@@ -11,9 +11,9 @@ const ShowTime=require('../models/showTime')
 //Costmer already choosen movie
 //GET Theatre ?day >page
 
-router.get('/shows/:movieid',async (req,res)=>
+router.put('/shows/:movieid',async (req,res)=>
 {
-    const date=new Date(req.query.d)
+    const date=new Date(req.body.date)
     const _movie=mongoose.Types.ObjectId(req.params.movieid)
     filter={
         _movie,
@@ -34,7 +34,9 @@ router.get('/shows/:movieid',async (req,res)=>
             {
                 _id: "$_theatre", 
                   showtimes:{$push:{slot: "$_slot",
-                  seatInfo:"$seatInfo"}},
+                  seatInfo:"$seatInfo",
+                  _showTime : "$_id"
+                }},
             } 
         },
         {

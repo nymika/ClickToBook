@@ -43,6 +43,24 @@
     /*border : 2px solid yellow;*/
     width : 18%;
 }
+
+.slides {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading {
+    border-bottom: 2px solid #4e5565;
+    padding : 2%;
+    width : 30%;
+    margin-left : 35%;
+    color : maroon;
+}
+.tick {
+    max-height : 14px;
+    max-width : 14px;
+}
 /* .movie_categories {
     list-style-type: none;
     margin: 0;
