@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import styles from './stylesheets/MyProfile.module.css'
@@ -16,8 +15,7 @@ class UpdateProfile extends Component {
             password: '',
             repassword: '',
             userType: '',
-            gender: '',
-            DOB: '',
+            
             errors: {}
         };
         this.safelyParseJSON = this.safelyParseJSON.bind(this)
@@ -96,8 +94,8 @@ class UpdateProfile extends Component {
                 phoneNumber: this.state.phoneNumber,
                 email: this.state.email,
                 userType: this.state.userType,
-                gender : this.state.gender,
-                DOB : this.state.DOB
+                // gender : this.state.gender,
+                // DOB : this.state.DOB
             };
             console.log(user)
             axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
@@ -113,8 +111,8 @@ class UpdateProfile extends Component {
                         email: response.data.email,
                         userType: response.data.userType,
                         phoneNumber: response.data.phoneNumber,
-                        gender : response.data.gender,
-                        DOB : response.data.DOB
+                        // gender : response.data.gender,
+                        // DOB : response.data.DOB
                         // password: currentUser.userType,
                         // repassword: '',
                         // errors: {}
@@ -135,19 +133,21 @@ class UpdateProfile extends Component {
     componentDidMount() {
         const currentUserStorage = localStorage.getItem("currentUser");
         const currentUser = this.safelyParseJSON(currentUserStorage);
-
+        console.log(currentUser)
+        if(currentUser){
         this.setState({
 
-            firstName: currentUser.name.firstName,
-            lastName: currentUser.name.lastName,
+            // firstName: currentUser.name.firstName,
+            // lastName: currentUser.name.lastName,
 
             email: currentUser.email,
             phoneNumber: currentUser.phoneNumber,
             userType: currentUser.userType,
-            gender : currentUser.gender,
-            DOB : currentUser.DOB
+            // gender : currentUser.gender,
+            // DOB : currentUser.DOB
             // password: currentUser.password,
         });
+    }
     }
 
     render() {

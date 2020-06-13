@@ -9,7 +9,7 @@ const ETicket = (props) => (
             </div>
             <div className={styles.ticketdetails}>
                 <div className={styles.titlebox}>
-                    <h3 className={styles.title}>{props.Title}  ( {props.dimen} , {props.language} ) </h3>
+                    <h3 className={styles.title}>{props.Title}  ( {props.dimen} ) </h3>
                 </div>
                 <div className={styles.theatretimedate}>
                     <p className={styles.theatre}>{props.Theatre}  |  {props.time}  |  {props.date}</p>

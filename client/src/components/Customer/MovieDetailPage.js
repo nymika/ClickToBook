@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import axios from 'axios';
 
 import styles from './stylesheets/MovieDetailPage.module.css';
-import MovieDetailReviewBox from "./MovieDetailReviewBox";
+//import MovieDetailReviewBox from "./MovieDetailReviewBox";
 import ShowTheatres from "./ShowTheatres";
 import tick from './images/tick.png';
 
@@ -13,8 +13,11 @@ class MovieDetailPage extends Component {
     state = {
         selectedMovie: {},
         yourRating: '',
+        yourReview : '',
         currentUser: {},
-        BookTickets: false
+        BookTickets: false,
+        showSummary: true,
+        showReviews: false,
     }
 
     safelyParseJSON = (json) => {
@@ -43,8 +46,9 @@ class MovieDetailPage extends Component {
                 //console.log(response.data)
                 this.setState({
                     selectedMovie: response.data.movie,
-                    yourRating : response.data.userRating.rate
+                    yourRating: response.data.userRating.rate
                 });
+                //console.log(this.state)
             }).catch((e) => alert(e));
     }
 
@@ -64,9 +68,26 @@ class MovieDetailPage extends Component {
         axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
         axios.put(`http://localhost:3000/addrating/${this.props.match.params.id}`, inputBody)
             .then(response => {
-                console.log(response)
+                //console.log(response.data)
+                alert('New Rating added!')          
             }).catch((e) => alert(e))
 
+    }
+
+    AddCommentAPIHandler() {
+        const body = {
+            comment : this.state.yourReview
+        }
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
+        axios.put(`http://localhost:3000/comment/${this.props.match.params.id}`, body)
+            .then(response => {
+                //console.log(response.data)
+                this.setState({
+                    yourReview : ''
+                })
+                alert('New Review Added!')
+                window.location.reload(false);
+            }).catch((e) => alert(e))
     }
 
     BookTickets() {
@@ -75,6 +96,21 @@ class MovieDetailPage extends Component {
         })
         window.scrollTo(0, 500)
     }
+
+    ShowReviews() {
+        this.setState({
+            showReviews: true,
+            showSummary: false
+        })
+    }
+
+    ShowSummary() {
+        this.setState({
+            showSummary: true,
+            showReviews: false
+        })
+    }
+
 
     componentDidMount() {
         var selectedMovieId = this.props.match.params.id;
@@ -129,41 +165,61 @@ class MovieDetailPage extends Component {
                                         <p>You rate it</p>
                                     </div> : null}
                             </div>
-                            <button onClick={() => this.BookTickets()} className={styles.Moviebookticket}>BOOK TICKETS</button>
                             <div className={styles.Summaryreviewsheading}>
                                 <ul className={styles.Summaryreviews}>
-                                    <NavLink className={styles.SummaryLink} to={this.props.match.url}
+                                    <NavLink className={styles.SummaryLink} to={this.props.match.url} onClick={() => this.ShowSummary()} exact
                                         activeStyle={{
-                                            "borderBottom": "2px solid #4e5565",
-                                            "color": "#282c34",
-                                            "backgroundColor": "white"
+                                            "borderBottom": "2px solid white",
+                                            "color": "white",
+                                            "backgroundColor": "#282c34"
                                         }}><li className={styles.summaryreviewslist}>Summary</li></NavLink>
-                                    <NavLink className={styles.SummaryLink} to={this.props.match.url + "/User's Reviews"}
+                                    <button onClick={() => this.BookTickets()} className={styles.Moviebookticket}>BOOK TICKETS</button>
+
+                                    <NavLink className={styles.SummaryLink} onClick={() => this.ShowReviews()}
+                                        to={this.props.match.url}
                                         activeStyle={{
-                                            "borderBottom": "2px solid #4e5565",
+                                            "borderBottom": "2px solid white",
                                             "color": "white",
                                             "backgroundColor": "#282c34"
-                                        }}><li className={styles.summaryreviewslist}>User's Reviews</li></NavLink>
-                                    <NavLink className={styles.SummaryLink} to={this.props.match.url + "/Critic's Reviews"}
-                                        activeStyle={{
-                                            "borderBottom": "2px solid #4e5565",
-                                            "color": "white",
-                                            "backgroundColor": "#282c34"
-                                        }}><li className={styles.summaryreviewslist}>Critic's Reviews</li></NavLink>
+                                        }}><li className={styles.summaryreviewslist}>Your Reviews</li></NavLink>
                                 </ul>
                             </div>
 
                             <div className={styles.Moviesummarybox}>
-                                <Route path="/MovieDetailPage/:id" exact render={() =>
+                                {(this.state.showSummary) ?
                                     <div>
                                         <p className="Movie-Description">{this.state.selectedMovie.synopsis}</p>
                                         <p>Date of Release : {this.state.selectedMovie.releaseDate} </p>
                                         <p>Duration : {this.state.selectedMovie.runtime} </p>
                                         <p>Starring : {this.state.selectedMovie.actors}</p>
                                         <p>Directed : {this.state.selectedMovie.director}</p>
-                                    </div>} />
-                                <Route path="/MovieDetailPage/:id/User's Reviews" exact component={MovieDetailReviewBox} />
-                                <Route path="/MovieDetailPage/:id/Critic's Reviews" exact component={MovieDetailReviewBox} />
+                                    </div> : null}
+
+                                {(this.state.showReviews) ?
+                                    <div>
+                                        {this.state.selectedMovie.comments.map((comment) => {
+                                            return (
+
+                                                <div>
+                                                    <div className={styles.SingleReviewBox}>
+                                                        {/* <div className={styles.UserNameBox}>
+                                                            <h4 className={styles.UserName}>{comment.postedBy.name.firstName}</h4>
+                                                        </div> */}
+                                                        <div>
+                                                            <p className={styles.UserReview}>{comment.body}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })}
+                                        {(this.state.currentUser) ? <div>
+                                            <input type="text" placeholder='Enter Your Review' className={styles.inputReview} 
+                                            value={this.state.yourReview} onChange={this.updateUserRatingState} name='yourReview'/>
+                                            <button type="submit" onClick={() => this.AddCommentAPIHandler()}><img className={styles.tick} src={tick} alt="submit" /></button>
+                                        </div> : null}
+                                    </div> : null
+                                }
+
                             </div>
                         </div>
                     </div>

@@ -27,6 +27,13 @@
 
 }
 
+.notAvailable {
+    background-color: white;
+    color:#8b95a7;
+    display: inline-block;
+    cursor: not-allowed;
+}
+
 .reserved {
     background-color: white;
     color:#8b95a7;

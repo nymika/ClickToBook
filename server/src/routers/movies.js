@@ -56,14 +56,13 @@ router.get('/upcomingMovies',async (req,res)=>{
 router.put("/movie/:movieid",async(req,res)=>{
     const _id=req.params.movieid
     const _user=req.body._user
-    //console.log(_id,_user)
     try{
         const movie=await Movie.findById(_id)
         .populate("comments.postedBy","_id name")
 
         // const movie=await Movie.findById(_id)
         // .populate("comments.postedBy","_id name").populate({path:"ratings.ratedBy",match:{_id:_user},select:"_id name"})
-       //console.log(movie)
+       
         if(!movie)
         {
             return res.status(404).send("Movie not found")
@@ -73,15 +72,18 @@ router.put("/movie/:movieid",async(req,res)=>{
             //console.log(_user)
             const ratings=[...movie.ratings]
             //console.log(ratings)
-            const userRating=ratings.find(({ratedBy})=>_user==ratedBy)
+            let userRating=ratings.find(({ratedBy})=>_user==ratedBy)
             //console.log(userRating)
+            if(!userRating)
+            {
+                console.log("undefined")
+                userRating={}
+            }
             return res.send({movie,userRating})
         //}
        // return res.send(movie)
     }catch(e){
-        //console.log('error')
         return res.status(501).send()
     }
 })
-
 module.exports=router

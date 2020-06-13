@@ -26,7 +26,7 @@ router.put('/search',async(req,res)=>{
             }
         ])
         if(!movies.length)
-        return res.send("Nothing found")
+        return res.send("")
         return res.send(movies)
         //console.log(movies)
         //const theatres=await Theatre.find({$text:{$search:searchText}})

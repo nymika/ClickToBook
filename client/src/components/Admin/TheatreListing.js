@@ -76,9 +76,9 @@ class TheatreListing extends Component {
                                 // Screens={theatre.Screens}
                                 />,
 
-                                <button className={styles.Delete}
+                                {/* <button className={styles.Delete}
                                     onClick={() => this.deleteTheatreHandler(index)}>
-                                    Delete</button>
+                                    Delete</button> */}
                                 <button className={styles.Subscribe}
                                     onClick={() => this.ApproveTheatreAPIHandler(theatre._id)}>
                                     Accept Approval</button>
@@ -105,11 +105,11 @@ class TheatreListing extends Component {
                                     Aseat={theatre.seatInfo.A}
                                     Bseat={theatre.seatInfo.B}
                                 // Screens={theatre.Screens}
-                                />,
+                                />
 
-                                <button className={styles.Delete}
+                                {/* <button className={styles.Delete}
                                     onClick={() => this.deleteTheatreHandler(index)}>
-                                    Delete</button>
+                                    Delete</button> */}
                             </div>
                         )
                     })}
@@ -133,11 +133,11 @@ class TheatreListing extends Component {
                                     Aseat={theatre.seatInfo.A}
                                     Bseat={theatre.seatInfo.B}
                                 // Screens={theatre.Screens}
-                                />,
+                                />
 
-                                <button className={styles.Delete}
+                                {/* <button className={styles.Delete}
                                     onClick={() => this.deleteTheatreHandler(index)}>
-                                    Delete</button>
+                                    Delete</button> */}
                             </div>
                         )
                     })}

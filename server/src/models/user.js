@@ -196,13 +196,13 @@ const userSchema = new mongoose.Schema({
             lowercase: true
         }
     },
-    gender:{
-        type:String,
-        enum:["Male","Female","Other"]
-    },
-    DOB:{
-        type:Date
-    },
+    // gender:{
+    //     type:String,
+    //     enum:["Male","Female","Other"]
+    // },
+    // DOB:{
+    //     type:Date
+    // },
     tokens: [{}]
 })
 
@@ -252,9 +252,12 @@ userSchema.statics.findByCredentials = async (email, password) => {
 
 userSchema.pre('save', async function (next) {
     const user = this;
+    //console.log('10')
     if (user.isModified('password')) {
+        //console.log('modified!')
         user.password = await bcrypt.hash(user.password, 8)
     }
+    //console.log('11')
     next();
 })
 

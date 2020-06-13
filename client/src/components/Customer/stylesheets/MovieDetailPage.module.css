@@ -63,9 +63,9 @@
     color : white;
     margin : 10px ;
 }
-.SummaryLink:hover{
+/* .SummaryLink:hover{
     color : white;
-    /*border : 2px solid yellow;*/
+    border : 2px solid yellow;
     padding : 4px;
     text-decoration: underline;
 }
@@ -73,7 +73,7 @@
 
 .SummaryLink:active {
     color : white;
-/*border : 2px solid yellow;*/
+border : 2px solid yellow;
     padding : 4px;
     text-decoration: underline;
 }
@@ -83,7 +83,7 @@
     border : 2px solid yellow;
     padding : 4px;
     text-decoration: underline;
-}
+} */
 
 .SummaryLink {
     color : #8c8c8c;
@@ -101,7 +101,7 @@
 }
 
 .summaryreviewslist {
-    border : 1px solid #4e5565;
+    /* border : 1px solid #4e5565; */
     margin : 4px;
     display : inline;
     padding : 10px;
@@ -126,6 +126,9 @@
     /*border : 1px solid green;*/
     width : 100%;
 }
-.UserReview {
-    /*border : 1px solid yellow;*/
+.inputReview {
+    width : 80%;
+    margin-right: 44px;
+    margin-top : 10px;
+    padding : 10px;
 }

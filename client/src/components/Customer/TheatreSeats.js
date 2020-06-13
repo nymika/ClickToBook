@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import { Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -11,25 +10,18 @@ class TheatreSeats extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            seat: [
-                'G1', 'G2', 'G3', 'G4', 'G5', 'G6',
-                'B1', 'B2', 'B3', 'B4', 'B5', 'B6',
-                'B7', 'B8', 'B9', 'B10', 'B11', 'B12'
-            ],
-            seatAvailable: [
-                'G1', 'G2', 'G3', 'G4', 'G5', 'G6',
-                'B1', 'B2', 'B3', 'B4', 'B5', 'B6',
-                'B7', 'B8', 'B9', 'B10', 'B11', 'B12'
-            ],
+            seat: [],
+            seatAvailable: [],
             seatReserved: [],
             seatSelected: [],
+            seatNotAvailable : [],
             seatInfo: {
-                'G1': '',
-                'G2' : '',
-                'G3' : '',
-                'G4' : '',
-                'G5' : '',
-                'G6' : '',
+                'A1': '',
+                'A2': '',
+                'A3': '',
+                'A4': '',
+                'A5': '',
+                'A6': '',
                 'B1' : '',
                 'B2' : '',
                 'B3' : '',
@@ -42,23 +34,27 @@ class TheatreSeats extends Component {
                 'B10' : '',
                 'B11' : '',
                 'B12' : ''
-            }
+            },
+            showTimeId: this.props.showTimeId,
+            ticketId : '',
+            ticket : {},
+            showTicket : false
         }
     }
 
     GetSlotInfoAPIHandler = () => {
-        //console.log('entered')
-        axios.get(`http://localhost:3000/ticketbooking/${this.props.slotId}`)
+        console.log('entered')
+        axios.get(`http://localhost:3000/ticketbooking/${this.props.showTimeId}`)
             .then(response => {
                 console.log(response.data)
                 this.setState({
                     seatInfo : {
-                        'G1' : response.data.A.availability[0],
-                        'G2' : response.data.A.availability[1],
-                        'G3' : response.data.A.availability[2],
-                        'G4' : response.data.A.availability[3],
-                        'G5' : response.data.A.availability[4],
-                        'G6' : response.data.A.availability[5],
+                        'A1': response.data.A.availability[0],
+                        'A2': response.data.A.availability[1],
+                        'A3': response.data.A.availability[2],
+                        'A4': response.data.A.availability[3],
+                        'A5': response.data.A.availability[4],
+                        'A6': response.data.A.availability[5],
                         'B1' : response.data.B.availability[0],
                         'B2' : response.data.B.availability[1],
                         'B3' : response.data.B.availability[2],
@@ -73,9 +69,26 @@ class TheatreSeats extends Component {
                         'B12' : response.data.B.availability[11]
                     }
                 })
-                console.log(this.state.seatInfo)
-            }).catch((e) => alert(e))
-    }
+
+                //Object.keys(objectName).forEach(item => console.log(objectName[item]))
+
+                Object.keys(this.state.seatInfo).forEach( item => {
+                    if(! this.state.seatInfo[item]) {
+                        this.setState({
+                            seatNotAvailable : this.state.seatNotAvailable.concat(item)
+                        })
+                    }
+                    else {
+                        this.setState({
+                            seatAvailable : this.state.seatAvailable.concat(item),
+                            seat : this.state.seat.concat(item)
+                        })
+                    }
+                })
+
+                 console.log(this.state.seatInfo)
+             }).catch((e) => alert(e))
+     }
 
     onClickData(seat) {
         if (this.state.seatReserved.indexOf(seat) > -1) {
@@ -92,6 +105,7 @@ class TheatreSeats extends Component {
             })
         }
     }
+
     checktrue(row) {
         if (this.state.seatSelected.indexOf(row) > -1) {
             return false
@@ -100,12 +114,39 @@ class TheatreSeats extends Component {
         }
     }
 
-    handleSubmited() {
-
+     handleSubmited() {
         this.setState({ seatSelected: this.state.seatSelected.concat(this.state.seatReserved) })
-        // this.setState({
-        //     seatReserved: []
-        // })
+        //console.log(this.state.seatReserved, this.state.seatSelected)
+        const input = {
+            _showTime: this.state.showTimeId,
+            seatsInfo: this.state.seatReserved,
+        }
+        console.log(input)
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem("token")
+        axios.post('http://localhost:3000/ticket', input)
+            .then(response => {
+                console.log(response.data)
+                this.setState({
+                    ticketId : response.data
+                })
+            }).catch((e) => alert(e))
+    }
+
+    GetTicketsAPIHandler() {
+        const input = {
+            _id : this.state.ticketId
+        }
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem("token")
+        axios.put('http://localhost:3000/ticketinfo', input)
+            .then(response => {
+                //console.log(response.data)
+                this.setState({
+                    ticket : response.data,
+                    showTicket : true
+                })
+                console.log(this.state.ticket)
+            }).catch((e) => alert(e))
+        window.scrollTo(0, 92500)
     }
 
     componentDidMount() {
@@ -129,30 +170,29 @@ class TheatreSeats extends Component {
                         />
                     </div>
 
-                    <Link to={'/GetTickets'}>
-                        <button type="button" onClick={() => {
-                            console.log(this.state.seatReserved)
-                            window.scrollTo(0, 92500)
-                        }}>Get Ticket</button>
-                    </Link>
-                    <Route path={"/GetTickets"} render={() =>
                     
-                        <ETicket Title={"Title"}
-                            Poster={"Poster"}
-                            Theatre={"Theatre"}
-                            dimen={"dimen"}
-                            language={"language"}
-                            time={"time"}
-                            date={"date"}
+                        <button type="button" onClick={() => {
+                            this.GetTicketsAPIHandler();
+                        }}>Get Ticket</button>
+                    
+                    { (this.state.showTicket ) ? 
+                    <ETicket Title={this.state.ticket.movie.title}
+                            Poster={this.state.ticket.movie.poster}
+                            Theatre={this.state.ticket.ticket._showTime._theatre.name}
+                            dimen={"2D"}
+                            // language={}
+                            time={this.state.ticket.bookedSlot.startTime}
+                            date={this.state.ticket.ticket._showTime.day}
                             numofseats={this.state.seatReserved.length}
+                            //seats = {this.state.ticket.ticket.seats[0].seatType - this.state.ticket.ticket.seats[0].seatno}
                             seats={this.state.seatReserved}
-                            ticketprice={"ticketprice"}
-                            conveniencefees={"conveniencefees"}
-                            amountpaid={"amountpaid"}
-                            bookingid={"bookingid"}
-                            bookingdatetime={"bookingdatetime"}
-                            confirmationid={"confirmationid"} />
-                    } />
+                            ticketprice={this.state.ticket.ticket.price}
+                            conveniencefees={" - nill"}
+                            amountpaid={this.state.ticket.ticket.price}
+                            bookingid={this.state.ticketId}
+                            bookingdatetime={this.state.ticket.ticket.booking}
+                            confirmationid={this.state.ticket.ticket.customer} /> : null}
+                    
                 </div>
             </div>
         )
@@ -163,6 +203,7 @@ class DrawGrid extends Component {
     render() {
         return (
             <div className="container">
+                <h3>Showing Available Seats Only.</h3>
                 <table className="grid">
                     <tbody>
                         <tr>

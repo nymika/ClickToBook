@@ -43,7 +43,7 @@ class TheatreListing extends Component {
         }
         axios.put(`http://localhost:3000/theatres/update/${theatre._id}`, body)
             .then(response => {
-                console.log('subscription done')
+                alert('subscription done')
                 console.log(response.data)
                 this.ShowTheatresAPIHandler()
             }).catch((e) => alert(e));
@@ -90,9 +90,9 @@ class TheatreListing extends Component {
                                 // Screens={theatre.Screens}
                                 />
 
-                                <button className={styles.Delete}
+                                {/* <button className={styles.Delete}
                                     onClick={() => this.DeleteTheatreAPIHandler(theatre)}>
-                                    Delete</button>
+                                    Delete</button> */}
                                 <br></br>
                             </div>
                         )
@@ -126,9 +126,9 @@ class TheatreListing extends Component {
                                     >See More</button>
                                     </Link>
 
-                                <button className={styles.Delete}
+                                {/* <button className={styles.Delete}
                                     onClick={() => this.DeleteTheatreAPIHandler(theatre)}>
-                                    Delete</button>
+                                    Delete</button> */}
                                 <br></br>
                             </div>
                         )
@@ -155,9 +155,9 @@ class TheatreListing extends Component {
                                 // Screens={theatre.Screens}
                                 />
 
-                                <button className={styles.Delete}
+                                {/* <button className={styles.Delete}
                                     onClick={() => this.DeleteTheatreAPIHandler(theatre)}>
-                                    Delete</button>
+                                    Delete</button> */}
 
                                 <button className={styles.Subscribe}
                                     onClick={() => this.SubscribeTheatreAPIHandler(theatre)}>

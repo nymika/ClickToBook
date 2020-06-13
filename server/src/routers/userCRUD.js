@@ -138,9 +138,10 @@ const router=new express.Router()
 router.post('/users/signup',async(req,res)=>{
     const email=req.body.email;
     const password=req.body.password
+    const name=req.body.name
 
     try{
-        const user=await new User({email,password});
+        const user=await new User({email,password,name});
         await user.save();
 
         //Generate token
@@ -175,20 +176,25 @@ router.post('/users/login',async(req,res)=>{
 //Update User
 router.put('/users/me',auth,async (req,res)=>{
     const updates=Object.keys(req.body)
+    //console.log(req.body)
     const user=req.user;
-    const allowedUpdates=['name','email','password','phoneNumber','address','userType','gender','DOB']
+    const allowedUpdates=['name','email','password','phoneNumber','address','userType']
     const isValidOperation=updates.every((update)=>
         allowedUpdates.includes(update))
 
     if(!isValidOperation){
         return res.status(404).send("Invalid Update")
     }
+    //console.log('1')
     try{
         updates.forEach((update)=>
             user[update]=req.body[update]
         )
+        //console.log('2')
+        //console.log(user)
         await user.save();
-        console.log(user.address.city);
+        //console.log('3')
+        //console.log(user.address.city);
         return res.status(200).send(user)
     }catch(e){
         return res.status(400).send(e);

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Link, Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import AddMovie from './AddMovie';
 import AddTheatre from './AddTheatre';
-import AddShow from './AddShow';
+//import AddShow from './AddShow';
 import MovieListing from './MovieListing';
 import TheatreListing from './TheatreListing';
 import TheatreDetailedPage from './TheatreDetailedPage'
-import Subscription from './Subscription';
+//import Subscription from './Subscription';
 
 import styles from './stylesheets/grid.css';
 

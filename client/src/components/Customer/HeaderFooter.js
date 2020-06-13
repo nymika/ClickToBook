@@ -60,10 +60,10 @@ class Header extends Component {
                             </Link>
                         </>
                     }
-                    <select className={styles.button}>
-                        <option>Hyderabad</option>
+                    {/* <select className={styles.button}>
+                        
                         <option>Gwalior</option>
-                    </select>
+                    </select> */}
 
                 </div>
 

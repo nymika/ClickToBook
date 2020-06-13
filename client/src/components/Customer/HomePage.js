@@ -19,6 +19,13 @@ import english from './images/homePage Slider Images/english.jpg';
 import telugu from './images/homePage Slider Images/telugu.jpg';
 import punjabi from './images/homePage Slider Images/punjabi.jpg';
 
+import deadpool from "./images/deadpool.jpg";
+import alice from "./images/alice.jpg";
+import harrypotter from "./images/deathly-hallows-p2-2.jpg";
+import FF from "./images/fast-five-2.jpg";
+import batman from "./images/batman-v-superman-dawn-of-justice-3.jpg";
+import alpha from "./images/alpha-alert-1.jpg";
+
 import Slideshow from "./slider";
 import AllMovies from './AllMovies';
 
@@ -28,18 +35,27 @@ class HomePage extends Component {
 
     state = {
         latest: [],
-        trending: []
+        trending: [],
+        latestMovies: [
+            { id: 'Deadpool', Title: 'Deadpool', Poster: deadpool },
+            { id: 'Alice', Title: 'Alice through the looking glass', Poster: alice },
+            { id: 'HarryPotter', Title: 'HarryPotter', Poster: harrypotter },
+            { id: 'FF', Title: 'Fast&Furious', Poster: FF },
+            { id: 'Batman', Title: 'Batman', Poster: batman },
+            { id: 'alpha', Title: 'Alpha Alert', Poster: alpha },
+            { id: 'ASVR', Title: 'ASVR', Poster: deadpool }
+        ]
     }
 
     GetTrendingMovies() {
         axios.get('http://localhost:3000/')
             .then(response => {
-                //console.log(response.data)
+                console.log(response.data)
                 this.setState({
                     latest: response.data.latestMovies,
                     trending: response.data.trendingMovies
                 })
-                console.log(this.state)
+                //console.log(this.state)
             }).catch((e) => alert(e))
     }
     componentDidMount() {
@@ -107,6 +123,28 @@ class HomePage extends Component {
                 <div class="swiper-button-next"></div>
             </div>
         )
+
+        // let trendingmoviesList = (
+        //     <div class="swiper-container">
+        //         <div class="swiper-wrapper">
+
+        //             {
+        //                 this.state.latestMovies.map(i => {
+        //                     return (
+        //                         <div class="swiper-slide">
+        //                             <Link
+        //                                 to={`/MovieDetailPage/${i.id}`} key={i.id} >
+        //                                 <img src={i.Poster} class="posterimage" alt="trendingmovie" />
+        //                             </Link>
+        //                         </div>
+        //                     )
+        //                 })
+        //             }
+
+        //         </div>
+        //         <div class="swiper-button-next"></div>
+        //     </div>
+        // )
 
         
 

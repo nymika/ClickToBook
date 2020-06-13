@@ -125,7 +125,7 @@ class TheatreDetailedPage extends Component {
     render() {
         var selectedTheatreId = this.props.match.params.id;
         var selectedTheatre = null;
-        this.state.theatres.filter(theatre => {
+        this.state.theatres.filter((theatre) => {
             if (theatre._id === selectedTheatreId) {
                 selectedTheatre = theatre
             }

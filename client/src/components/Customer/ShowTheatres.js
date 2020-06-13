@@ -29,7 +29,7 @@ class ShowTheatres extends Component {
         this.setState({
             getSlots: true
         })
-        console.log(this.state)
+        //console.log(this.state)
         console.log('slots are done')
         axios.put(`http://localhost:3000/shows/${this.props.movieId}`, this.state)
             .then(response => {
@@ -37,7 +37,7 @@ class ShowTheatres extends Component {
                 this.setState({
                     theatres: response.data
                 })
-                console.log(this.state.theatres)
+                //console.log(this.state.theatres)
             }).catch((e) => alert(e))
     }
 
@@ -47,7 +47,7 @@ class ShowTheatres extends Component {
             getSeats: true,
             selectedShowTimeId: showTimeId
         })
-        console.log(showTimeId)
+        //console.log(showTimeId)
     }
 
     // componentDidMount() {
@@ -109,7 +109,7 @@ class ShowTheatres extends Component {
                     </div>
                     {
                         (this.state.getSeats) ?
-                            <TheatreSeats slotId={this.state.selectedShowTimeId} /> : null
+                            <TheatreSeats showTimeId={this.state.selectedShowTimeId} /> : null
                     }
 
                 </div>

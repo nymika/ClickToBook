@@ -58,11 +58,11 @@ class MovieListing extends Component {
                                     Duration={movie.runtime}
                                     Director={movie.director[0]}
                                     Starring={movie.actors}
-                                    Genre={movie.genres} />,
+                                    Genre={movie.genres} />
 
-                                <button className={styles.Delete}
-                                    onClick={() => this.deleteMovieHandler(index)}>
-                                    Delete</button>
+                                // <button className={styles.Delete}
+                                //     onClick={() => this.deleteMovieHandler(index)}>
+                                //     Delete</button>
                                 ]
                             )
                         })}
